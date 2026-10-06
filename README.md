@@ -36,9 +36,9 @@ Não são necessários chaves, banco de dados ou instalação de pacotes. Para u
 - `script.js`: catálogo, sorteio, respostas e áudio.
 - `assets/`: ilustrações fornecidas pelo projeto; veja a lista em `assets/README.md`.
 
-As imagens ainda serão adicionadas. Sem imagens suficientes, aparecem **placeholders textuais identificados**, não desenhos inventados. Eles permitem testar o fluxo, mas não substituem a atividade de associação palavra-imagem. Com pelo menos duas imagens de conceitos distintos, o sorteio passa a usar somente figuras carregadas.
+Seis ilustrações fornecidas pela autora já estão em `assets/`, preservadas no formato JPEG original: cachorro, gato com novelos, bola, carro, menina e menino. A variante `gato.png` ainda é opcional e não entra no sorteio enquanto estiver ausente. Sem imagens suficientes, aparecem **placeholders textuais identificados**, não desenhos inventados. Eles permitem testar o fluxo, mas não substituem a atividade de associação palavra-imagem. Com pelo menos duas imagens de conceitos distintos, o sorteio passa a usar somente figuras carregadas.
 
-Para adicionar uma figura, coloque o PNG em `assets/` e registre seu arquivo, nome, pergunta e conceito em `FIGURES`, no início de `script.js`. `GAME_CONFIG.optionCount` controla a quantidade de opções; esta versão foi projetada e validada para **duas**. Quantidades maiores precisarão de validação visual e de usabilidade antes de serem disponibilizadas.
+Para adicionar uma figura, coloque a imagem em `assets/` e registre seu arquivo, nome, pergunta e conceito em `FIGURES`, no início de `script.js`. `GAME_CONFIG.optionCount` controla a quantidade de opções; esta versão foi projetada e validada para **duas**. Quantidades maiores precisarão de validação visual e de usabilidade antes de serem disponibilizadas.
 
 ## Acessibilidade e validação
 
@@ -54,4 +54,4 @@ Ao testar no navegador, verifique duas opções, tentativa após erro, mensagem 
 
 ## Status
 
-Primeira versão web funcional do jogo, em desenvolvimento. Ilustrações definitivas e validação com usuários ainda pendentes. PWA, Android, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras e não fazem parte desta versão.
+Primeira versão web funcional do jogo, em desenvolvimento. Seis ilustrações integradas; validação com usuários ainda pendente. PWA, Android, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras e não fazem parte desta versão.

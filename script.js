@@ -2,13 +2,13 @@
 
 // Add figures here. Variants share a concept so a cat never distracts from a cat.
 const FIGURES = [
-  { id: "cachorro", concept: "cachorro", label: "Cachorro", question: "Onde está o cachorro?", file: "cachorro.png" },
+  { id: "cachorro", concept: "cachorro", label: "Cachorro", question: "Onde está o cachorro?", file: "cachorro.jpg" },
   { id: "gato", concept: "gato", label: "Gato", question: "Onde está o gato?", file: "gato.png" },
-  { id: "gato-com-novelos", concept: "gato", label: "Gato com novelos", question: "Onde está o gato?", file: "gato-com-novelos.png" },
-  { id: "bola", concept: "bola", label: "Bola", question: "Onde está a bola?", file: "bola.png" },
-  { id: "carro", concept: "carro", label: "Carro", question: "Onde está o carro?", file: "carro.png" },
-  { id: "menina", concept: "menina", label: "Menina", question: "Onde está a menina?", file: "menina.png" },
-  { id: "menino", concept: "menino", label: "Menino", question: "Onde está o menino?", file: "menino.png" },
+  { id: "gato-com-novelos", concept: "gato", label: "Gato com novelos", question: "Onde está o gato?", file: "gato-com-novelos.jpg" },
+  { id: "bola", concept: "bola", label: "Bola", question: "Onde está a bola?", file: "bola.jpg" },
+  { id: "carro", concept: "carro", label: "Carro", question: "Onde está o carro?", file: "carro.jpg" },
+  { id: "menina", concept: "menina", label: "Menina", question: "Onde está a menina?", file: "menina.jpg" },
+  { id: "menino", concept: "menino", label: "Menino", question: "Onde está o menino?", file: "menino.jpg" },
 ];
 const GAME_CONFIG = { optionCount: 2 };
 const question = document.querySelector("#question");

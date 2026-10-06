@@ -1,13 +1,12 @@
 # Ilustrações
 
-Adicione aqui os arquivos originais, com estes nomes exatos:
+Imagens fornecidas pela autora e preservadas no formato JPEG original, sem recortes ou alterações:
 
-- cachorro.png
-- gato.png
-- gato-com-novelos.png
-- bola.png
-- carro.png
-- menina.png
-- menino.png
+- cachorro.jpg
+- gato-com-novelos.jpg
+- bola.jpg
+- carro.jpg
+- menina.jpg
+- menino.jpg
 
-Nenhuma imagem externa é utilizada. Até haver imagens de pelo menos dois conceitos diferentes, o jogo usa cartões temporários com nomes. Quando houver duas ou mais figuras de conceitos diferentes, somente as imagens carregadas entram no sorteio. Gato e gato com novelos representam o mesmo conceito e não aparecem como respostas concorrentes.
+A variante opcional `gato.png` ainda não foi fornecida. Nenhuma imagem externa é utilizada. O catálogo em `script.js` especifica o nome exato de cada arquivo. Com imagens de pelo menos dois conceitos diferentes, somente imagens carregadas entram no sorteio. Gato e gato com novelos representam o mesmo conceito e não aparecem como respostas concorrentes.
