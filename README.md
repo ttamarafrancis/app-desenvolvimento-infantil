@@ -8,9 +8,9 @@ O objetivo é oferecer jogos gratuitos, sem anúncios, sem login e sem coleta de
 
 ## Primeira atividade: Encontre a Figura
 
-A criança lê uma pergunta como “Onde está o cachorro?” e toca em uma das duas opções grandes. Uma resposta diferente permite tentar novamente, sem punição. Uma resposta correta recebe uma mensagem positiva discreta e libera o botão **Próxima figura**. A passagem é manual para respeitar o ritmo da criança, sem cronômetro.
+A criança lê uma pergunta como “Onde está o cachorro?” e toca em uma das duas opções grandes. Uma resposta diferente permite tentar novamente, sem punição. Uma resposta correta recebe uma mensagem positiva, três estrelinhas e um som suave; após 2,2 segundos o jogo avança sozinho. Uma resposta diferente mantém a rodada. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
 
-O botão **Ouvir a pergunta** usa a síntese de voz do navegador, com idioma `pt-BR`. A disponibilidade e a qualidade da voz dependem do navegador e do sistema operacional; instale uma voz em português brasileiro no dispositivo se necessário. Alguns sistemas podem usar serviços de voz online. O aplicativo envia à API de voz apenas a pergunta, sem dados da criança. Se o áudio não estiver disponível, a pergunta continua visível e o jogo permanece utilizável.
+Um toque inicial em **Começar a brincar** libera o som conforme as regras dos navegadores móveis. Cada rodada tenta falar automaticamente a pergunta; **Ouvir a pergunta** permite repetir. A voz usa a síntese de voz do navegador, com idioma `pt-BR`. A disponibilidade e a qualidade da voz dependem do navegador e do sistema operacional; instale uma voz em português brasileiro no dispositivo se necessário. Alguns sistemas podem usar serviços de voz online. O aplicativo envia à API de voz apenas a pergunta, sem dados da criança. Se o áudio não estiver disponível, a pergunta continua visível e o jogo permanece utilizável.
 
 As perguntas e as posições das opções são sorteadas. Gato e gato com novelos são variantes do mesmo conceito e nunca são usados como distratores entre si. O conceito da rodada anterior não se repete imediatamente.
 
@@ -42,7 +42,7 @@ Para adicionar uma figura, coloque a imagem em `assets/` e registre seu arquivo,
 
 ## Acessibilidade e validação
 
-A página inclui idioma português brasileiro, botões nativos com nomes acessíveis, foco visível, navegação por teclado, mensagens de status para leitores de tela e opção de reduzir movimentos. Não há limite de tempo, efeitos sonoros de recompensa ou animações de comemoração.
+A página inclui idioma português brasileiro, botões nativos com nomes acessíveis, foco visível, navegação por teclado, mensagens de status para leitores de tela e opção de reduzir movimentos. Não há limite de tempo para responder. A comemoração é curta, com som local de três notas e estrelas, sem flashes.
 
 Verificação básica de JavaScript:
 
@@ -50,7 +50,7 @@ Verificação básica de JavaScript:
 node --check script.js
 ```
 
-Ao testar no navegador, verifique duas opções, tentativa após erro, mensagem após acerto, avanço, repetição do áudio e telas de celular/tablet. A fala precisa também de conferência auditiva em um dispositivo com voz `pt-BR`.
+Ao testar no navegador, verifique duas opções, tentativa após erro, mensagem após acerto, avanço automático, áudio automático e repetição do áudio e telas de celular/tablet. A fala precisa também de conferência auditiva em um dispositivo com voz `pt-BR`.
 
 ## Status
 

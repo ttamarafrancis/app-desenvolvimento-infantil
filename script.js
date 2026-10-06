@@ -10,12 +10,20 @@ const FIGURES = [
   { id: "menina", concept: "menina", label: "Menina", question: "Onde está a menina?", file: "menina.jpg" },
   { id: "menino", concept: "menino", label: "Menino", question: "Onde está o menino?", file: "menino.jpg" },
 ];
-const GAME_CONFIG = { optionCount: 2 };
+const GAME_CONFIG = { optionCount: 2, advanceDelay: 2200 };
 const question = document.querySelector("#question");
 const choices = document.querySelector("#choices");
 const feedback = document.querySelector("#feedback");
 const repeat = document.querySelector("#repeat");
-const next = document.querySelector("#next");
+const stars = document.querySelector("#stars");
+const start = document.querySelector("#start");
+let advanceTimer;
+let speechWatchdog;
+let speechVersion = 0;
+let activeUtterance;
+let speechStarted = false;
+let audioContext;
+let started = false;
 const audioStatus = document.querySelector("#audio-status");
 const assetNote = document.querySelector("#asset-note");
 let figures = [];
@@ -53,28 +61,89 @@ function showPlaceholder(button, figure) {
   button.append(placeholder);
 }
 
+function stopSpeech() {
+  speechVersion++;
+  clearTimeout(speechWatchdog);
+  if (speechAvailable) window.speechSynthesis.cancel();
+  activeUtterance = null;
+}
+
 function speakInstruction() {
-  if (!speechAvailable || !current) return;
-  window.speechSynthesis.cancel();
+  if (!speechAvailable || !current || solved) return;
+  stopSpeech();
+  const version = speechVersion;
+  const synth = window.speechSynthesis;
   const utterance = new SpeechSynthesisUtterance(current.question);
+  // Retain a reference: some mobile engines otherwise drop the utterance.
+  activeUtterance = utterance;
+  speechStarted = false;
   utterance.lang = "pt-BR";
-  utterance.rate = 0.85;
-  const voice = window.speechSynthesis.getVoices().find((item) => item.lang.toLowerCase().replace("_", "-") === "pt-br");
+  utterance.rate = 0.9;
+  const voices = synth.getVoices();
+  const normalize = (voice) => voice.lang.toLowerCase().replaceAll("_", "-");
+  const voice = voices.find((item) => normalize(item) === "pt-br")
+    || voices.find((item) => normalize(item).startsWith("pt"));
   if (voice) utterance.voice = voice;
-  utterance.onstart = () => { audioStatus.textContent = "Ouvindo a pergunta…"; };
-  utterance.onend = () => { audioStatus.textContent = ""; };
-  utterance.onerror = (event) => {
-    if (event.error !== "canceled" && event.error !== "interrupted") {
-      audioStatus.textContent = "Não foi possível reproduzir o áudio. Leia a pergunta acima e tente ouvir novamente.";
-    }
+  const failed = () => {
+    if (version !== speechVersion) return;
+    audioStatus.textContent = "Não conseguimos tocar a voz. Toque em Ouvir a pergunta. Se continuar sem som, confira o volume e abra no Safari ou Chrome.";
   };
-  window.speechSynthesis.speak(utterance);
+  utterance.onstart = () => {
+    if (version !== speechVersion) return;
+    clearTimeout(speechWatchdog);
+    speechStarted = true;
+    audioStatus.textContent = "";
+  };
+  utterance.onend = () => {
+    if (version !== speechVersion) return;
+    clearTimeout(speechWatchdog);
+    activeUtterance = null;
+  };
+  utterance.onerror = (event) => {
+    if (version !== speechVersion) return;
+    clearTimeout(speechWatchdog);
+    if (event.error !== "canceled" && event.error !== "interrupted") failed();
+  };
+  speechWatchdog = setTimeout(failed, 5000);
+  synth.resume();
+  synth.speak(utterance);
+}
+
+function unlockSounds() {
+  const Context = window.AudioContext || window.webkitAudioContext;
+  if (!Context) return;
+  try {
+    audioContext ||= new Context();
+    audioContext.resume().catch(() => {});
+  } catch { /* The game remains playable without sound. */ }
+}
+
+function playSuccess() {
+  if (!audioContext || audioContext.state !== "running") return;
+  // Three soft notes generated locally, with no downloads or data collection.
+  const now = audioContext.currentTime;
+  [523.25, 659.25, 783.99].forEach((frequency, index) => {
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    const time = now + index * 0.14;
+    oscillator.type = "sine";
+    oscillator.frequency.value = frequency;
+    gain.gain.setValueAtTime(0, time);
+    gain.gain.linearRampToValueAtTime(0.09, time + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.35);
+    oscillator.connect(gain);
+    gain.connect(audioContext.destination);
+    oscillator.start(time);
+    oscillator.stop(time + 0.36);
+    oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
+  });
 }
 
 function startRound(moveFocus = false) {
-  if (speechAvailable) window.speechSynthesis.cancel();
+  stopSpeech();
+  clearTimeout(advanceTimer);
   solved = false;
-  next.hidden = true;
+  stars.hidden = true;
   feedback.textContent = "";
   if (speechAvailable) audioStatus.textContent = "";
   // Prefer another concept on the next round; choose only among loaded figures.
@@ -104,6 +173,7 @@ function startRound(moveFocus = false) {
     }
     button.addEventListener("click", () => {
       if (solved) return;
+      unlockSounds();
       if (figure.id !== current.id) {
         feedback.textContent = "Vamos tentar de novo? Você pode escolher outra figura.";
         return;
@@ -111,13 +181,17 @@ function startRound(moveFocus = false) {
       solved = true;
       button.classList.add("correct");
       feedback.textContent = "Muito bem! Você encontrou a figura.";
-      next.hidden = false;
-      // An explicit next step leaves time to hear/read the feedback, without a timer.
-      next.focus();
+      stopSpeech();
+      audioStatus.textContent = "";
+      stars.hidden = false;
+      playSuccess();
+      for (const option of choices.querySelectorAll("button")) option.setAttribute("aria-disabled", "true");
+      advanceTimer = setTimeout(() => startRound(true), GAME_CONFIG.advanceDelay);
     });
     choices.append(button);
   }
-  if (moveFocus) choices.querySelector("button").focus();
+  if (moveFocus) question.focus({ preventScroll: true });
+  if (started) speakInstruction();
 }
 
 async function init() {
@@ -132,9 +206,33 @@ async function init() {
   } else {
     audioStatus.textContent = "O áudio não está disponível neste navegador. Você pode ler a pergunta acima.";
   }
-  startRound();
+  start.disabled = false;
+  // Prime the voice list; browsers may populate it asynchronously.
+  if (speechAvailable) window.speechSynthesis.getVoices();
 }
-repeat.addEventListener("click", speakInstruction);
-next.addEventListener("click", () => startRound(true));
-window.addEventListener("pagehide", () => { if (speechAvailable) window.speechSynthesis.cancel(); });
+start.addEventListener("click", () => {
+  started = true;
+  document.querySelector("#welcome").hidden = true;
+  document.querySelector("#game").hidden = false;
+  unlockSounds();
+  startRound(true);
+});
+repeat.addEventListener("click", () => { unlockSounds(); speakInstruction(); });
+if (speechAvailable) {
+  window.speechSynthesis.addEventListener("voiceschanged", () => {
+    if (started && !solved && activeUtterance && !speechStarted) speakInstruction();
+  });
+}
+document.addEventListener("visibilitychange", () => {
+  if (!started) return;
+  if (document.hidden) {
+    stopSpeech();
+    clearTimeout(advanceTimer);
+  } else if (solved) {
+    startRound(true);
+  } else {
+    speakInstruction();
+  }
+});
+window.addEventListener("pagehide", () => { stopSpeech(); clearTimeout(advanceTimer); });
 init();

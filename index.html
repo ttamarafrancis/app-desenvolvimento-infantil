@@ -6,18 +6,19 @@
   <meta name="theme-color" content="#f7f3e9">
   <meta name="description" content="Encontre a Figura: uma atividade educativa para brincar com palavras e imagens, no seu ritmo.">
   <title>Encontre a Figura · App Desenvolvimento Infantil</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=2">
+  <script src="script.js?v=2" defer></script>
 </head>
 <body>
   <header class="site-header"><span class="brand-mark" aria-hidden="true">✿</span> App Desenvolvimento Infantil</header>
   <main>
     <div class="introduction"><p class="eyebrow">PALAVRAS E IMAGENS</p><h1>Encontre a Figura</h1><p>Vamos brincar? Toque na figura que combina com a pergunta.</p></div>
-    <section class="game" aria-label="Jogo Encontre a Figura">
-      <div class="instruction"><p class="eyebrow">OLHE COM CALMA</p><h2 id="question">Preparando as figuras…</h2><button id="repeat" class="audio-button" type="button" disabled><span aria-hidden="true">♫</span> Ouvir a pergunta</button><p id="audio-status" class="audio-status" role="status"></p></div>
+    <div id="welcome" class="welcome"><p>Toque para começar com som.</p><button id="start" class="next-button" type="button" disabled>Começar a brincar ♫</button></div>
+    <section hidden id="game" class="game" aria-label="Jogo Encontre a Figura">
+      <div class="instruction"><p class="eyebrow">OLHE COM CALMA</p><h2 id="question" tabindex="-1">Preparando as figuras…</h2><button id="repeat" class="audio-button" type="button" disabled><span aria-hidden="true">♫</span> Ouvir a pergunta</button><p id="audio-status" class="audio-status" role="status"></p></div>
       <div id="choices" class="choices" aria-labelledby="question"></div>
       <p id="feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true"></p>
-      <button id="next" class="next-button" type="button" hidden>Próxima figura <span aria-hidden="true">→</span></button>
+      <div id="stars" class="stars" aria-hidden="true" hidden>✦ ★ ✦</div>
       <p id="asset-note" class="asset-note" hidden>As ilustrações estão chegando. Por enquanto, cada cartão mostra o nome da figura.</p>
       <noscript><p>Ative o JavaScript no navegador para brincar.</p></noscript>
     </section>
