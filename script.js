@@ -18,18 +18,14 @@ const repeat = document.querySelector("#repeat");
 const stars = document.querySelector("#stars");
 const start = document.querySelector("#start");
 let advanceTimer;
-let speechWatchdog;
-let speechVersion = 0;
-let activeUtterance;
-let speechStarted = false;
-let audioContext;
+let playbackVersion = 0;
 let started = false;
+const player = document.querySelector("#game-audio");
 const audioStatus = document.querySelector("#audio-status");
 const assetNote = document.querySelector("#asset-note");
 let figures = [];
 let current = null;
 let solved = false;
-const speechAvailable = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
 
 function shuffled(items) {
   const result = [...items];
@@ -61,91 +57,45 @@ function showPlaceholder(button, figure) {
   button.append(placeholder);
 }
 
-function stopSpeech() {
-  speechVersion++;
-  clearTimeout(speechWatchdog);
-  if (speechAvailable) window.speechSynthesis.cancel();
-  activeUtterance = null;
+function stopAudio() {
+  playbackVersion++;
+  player.pause();
+}
+
+function playAudio(file) {
+  stopAudio();
+  const version = playbackVersion;
+  player.src = `assets/audio/${file}.mp3`;
+  player.controls = false;
+  audioStatus.textContent = "";
+  const failed = () => {
+    if (version !== playbackVersion) return;
+    player.controls = true;
+    audioStatus.textContent = "O som não tocou. Use o botão de reprodução abaixo e confira o volume do aparelho.";
+  };
+  player.onerror = failed;
+  try {
+    const playing = player.play();
+    if (playing) playing.catch(failed);
+  } catch { failed(); }
 }
 
 function speakInstruction() {
-  if (!speechAvailable || !current || solved) return;
-  stopSpeech();
-  const version = speechVersion;
-  const synth = window.speechSynthesis;
-  const utterance = new SpeechSynthesisUtterance(current.question);
-  // Retain a reference: some mobile engines otherwise drop the utterance.
-  activeUtterance = utterance;
-  speechStarted = false;
-  utterance.lang = "pt-BR";
-  utterance.rate = 0.9;
-  const voices = synth.getVoices();
-  const normalize = (voice) => voice.lang.toLowerCase().replaceAll("_", "-");
-  const voice = voices.find((item) => normalize(item) === "pt-br")
-    || voices.find((item) => normalize(item).startsWith("pt"));
-  if (voice) utterance.voice = voice;
-  const failed = () => {
-    if (version !== speechVersion) return;
-    audioStatus.textContent = "Não conseguimos tocar a voz. Toque em Ouvir a pergunta. Se continuar sem som, confira o volume e abra no Safari ou Chrome.";
-  };
-  utterance.onstart = () => {
-    if (version !== speechVersion) return;
-    clearTimeout(speechWatchdog);
-    speechStarted = true;
-    audioStatus.textContent = "";
-  };
-  utterance.onend = () => {
-    if (version !== speechVersion) return;
-    clearTimeout(speechWatchdog);
-    activeUtterance = null;
-  };
-  utterance.onerror = (event) => {
-    if (version !== speechVersion) return;
-    clearTimeout(speechWatchdog);
-    if (event.error !== "canceled" && event.error !== "interrupted") failed();
-  };
-  speechWatchdog = setTimeout(failed, 5000);
-  synth.resume();
-  synth.speak(utterance);
-}
-
-function unlockSounds() {
-  const Context = window.AudioContext || window.webkitAudioContext;
-  if (!Context) return;
-  try {
-    audioContext ||= new Context();
-    audioContext.resume().catch(() => {});
-  } catch { /* The game remains playable without sound. */ }
+  if (!current || solved) return;
+  playAudio(current.concept);
 }
 
 function playSuccess() {
-  if (!audioContext || audioContext.state !== "running") return;
-  // Three soft notes generated locally, with no downloads or data collection.
-  const now = audioContext.currentTime;
-  [523.25, 659.25, 783.99].forEach((frequency, index) => {
-    const oscillator = audioContext.createOscillator();
-    const gain = audioContext.createGain();
-    const time = now + index * 0.14;
-    oscillator.type = "sine";
-    oscillator.frequency.value = frequency;
-    gain.gain.setValueAtTime(0, time);
-    gain.gain.linearRampToValueAtTime(0.09, time + 0.02);
-    gain.gain.exponentialRampToValueAtTime(0.001, time + 0.35);
-    oscillator.connect(gain);
-    gain.connect(audioContext.destination);
-    oscillator.start(time);
-    oscillator.stop(time + 0.36);
-    oscillator.onended = () => { oscillator.disconnect(); gain.disconnect(); };
-  });
+  playAudio("acerto");
 }
 
 function startRound(moveFocus = false) {
-  stopSpeech();
+  stopAudio();
   clearTimeout(advanceTimer);
   solved = false;
   stars.hidden = true;
   feedback.textContent = "";
-  if (speechAvailable) audioStatus.textContent = "";
+  audioStatus.textContent = "";
   // Prefer another concept on the next round; choose only among loaded figures.
   const candidates = figures.filter((figure) => figure.concept !== current?.concept);
   current = shuffled(candidates)[0];
@@ -173,7 +123,6 @@ function startRound(moveFocus = false) {
     }
     button.addEventListener("click", () => {
       if (solved) return;
-      unlockSounds();
       if (figure.id !== current.id) {
         feedback.textContent = "Vamos tentar de novo? Você pode escolher outra figura.";
         return;
@@ -181,7 +130,7 @@ function startRound(moveFocus = false) {
       solved = true;
       button.classList.add("correct");
       feedback.textContent = "Muito bem! Você encontrou a figura.";
-      stopSpeech();
+      stopAudio();
       audioStatus.textContent = "";
       stars.hidden = false;
       playSuccess();
@@ -201,32 +150,25 @@ async function init() {
   const hasPlayableImages = new Set(available.map((figure) => figure.concept)).size >= 2;
   figures = hasPlayableImages ? available : catalog;
   assetNote.hidden = hasPlayableImages;
-  if (speechAvailable) {
-    repeat.disabled = false;
-  } else {
-    audioStatus.textContent = "O áudio não está disponível neste navegador. Você pode ler a pergunta acima.";
-  }
+  repeat.disabled = false;
+  // Select and preload the first question before the child's initial tap.
+  startRound();
+  player.src = `assets/audio/${current.concept}.mp3`;
+  player.load();
   start.disabled = false;
-  // Prime the voice list; browsers may populate it asynchronously.
-  if (speechAvailable) window.speechSynthesis.getVoices();
 }
 start.addEventListener("click", () => {
   started = true;
   document.querySelector("#welcome").hidden = true;
   document.querySelector("#game").hidden = false;
-  unlockSounds();
-  startRound(true);
+  question.focus({ preventScroll: true });
+  speakInstruction();
 });
-repeat.addEventListener("click", () => { unlockSounds(); speakInstruction(); });
-if (speechAvailable) {
-  window.speechSynthesis.addEventListener("voiceschanged", () => {
-    if (started && !solved && activeUtterance && !speechStarted) speakInstruction();
-  });
-}
+repeat.addEventListener("click", speakInstruction);
 document.addEventListener("visibilitychange", () => {
   if (!started) return;
   if (document.hidden) {
-    stopSpeech();
+    stopAudio();
     clearTimeout(advanceTimer);
   } else if (solved) {
     startRound(true);
@@ -234,5 +176,5 @@ document.addEventListener("visibilitychange", () => {
     speakInstruction();
   }
 });
-window.addEventListener("pagehide", () => { stopSpeech(); clearTimeout(advanceTimer); });
+window.addEventListener("pagehide", () => { stopAudio(); clearTimeout(advanceTimer); });
 init();
