@@ -124,10 +124,25 @@ function startRound(moveFocus = false) {
     button.addEventListener("click", () => {
       if (solved) return;
       if (figure.id !== current.id) {
+        for (const option of choices.querySelectorAll("button")) {
+          option.classList.remove("try-again");
+          option.querySelector(".error-mark")?.remove();
+        }
+        button.classList.add("try-again");
+        const mark = document.createElement("span");
+        mark.className = "error-mark";
+        mark.textContent = "×";
+        mark.setAttribute("aria-hidden", "true");
+        button.append(mark);
+        playAudio("tente-novamente");
         feedback.textContent = "Vamos tentar de novo? Você pode escolher outra figura.";
         return;
       }
       solved = true;
+      for (const option of choices.querySelectorAll("button")) {
+        option.classList.remove("try-again");
+        option.querySelector(".error-mark")?.remove();
+      }
       button.classList.add("correct");
       feedback.textContent = "Muito bem! Você encontrou a figura.";
       stopAudio();

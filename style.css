@@ -44,3 +44,6 @@ footer { padding: 22px 24px 30px; text-align: center; font-size: .75rem; color: 
 
 #game-audio:not([controls]) { display: none; }
 #game-audio[controls] { display: block; max-width: 100%; margin: 12px auto; }
+
+.choice.try-again { border-color: #a64f49; }
+.error-mark { position: absolute; top: 8px; right: 8px; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: #fff5f0; color: #a13d38; font-size: 2rem; font-weight: 700; line-height: 1; pointer-events: none; }

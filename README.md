@@ -8,7 +8,7 @@ O objetivo é oferecer jogos gratuitos, sem anúncios, sem login e sem coleta de
 
 ## Primeira atividade: Encontre a Figura
 
-A criança lê uma pergunta como “Onde está o cachorro?” e toca em uma das duas opções grandes. Uma resposta diferente permite tentar novamente, sem punição. Uma resposta correta recebe uma mensagem positiva, três estrelinhas e um som suave; após 2,2 segundos o jogo avança sozinho. Uma resposta diferente mantém a rodada. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
+A criança lê uma pergunta como “Onde está o cachorro?” e toca em uma das duas opções grandes. Uma resposta diferente mostra um × vermelho suave no cartão escolhido e toca uma nota curta e discreta. A criança pode tentar novamente, sem punição; a pergunta permanece. Uma resposta correta recebe uma mensagem positiva, três estrelinhas e um som suave; após 2,2 segundos o jogo avança sozinho. Uma resposta diferente mantém a rodada. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
 
 Um toque inicial em **Começar a brincar** inicia o áudio conforme as regras dos navegadores móveis. Cada rodada reproduz um arquivo MP3 local com a pergunta em português brasileiro; **Ouvir a pergunta** permite repetir. O som de acerto também é um MP3 local. Todos usam o mesmo elemento de áudio, liberado pelo toque inicial, sem depender da síntese de voz do Safari nem de serviços externos. Se a reprodução falhar, o jogo mostra uma mensagem e os controles nativos de áudio para tentar novamente.
 
