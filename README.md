@@ -8,9 +8,9 @@ O objetivo é oferecer jogos gratuitos, sem anúncios, sem login e sem coleta de
 
 ## Primeira atividade: Encontre a Figura
 
-A criança lê uma pergunta como “Onde está o cachorro?” e toca em uma das duas opções grandes. Uma resposta diferente mostra um × vermelho suave no cartão escolhido e toca uma nota curta e discreta. A criança pode tentar novamente, sem punição; a pergunta permanece. Uma resposta correta recebe uma mensagem positiva, três estrelinhas e um som suave; após 2,2 segundos o jogo avança sozinho. Uma resposta diferente mantém a rodada. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
+A criança lê uma pergunta como “Onde está o cachorro?” e toca em uma das duas opções grandes. Uma resposta diferente mantém a pergunta e permite uma nova tentativa, sem marca vermelha ou som de erro. Uma resposta correta recebe uma mensagem positiva para leitores de tela, três estrelinhas e um som suave; após 2,2 segundos o jogo avança sozinho. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
 
-Um toque inicial em **Começar a brincar** inicia o áudio conforme as regras dos navegadores móveis. Cada rodada reproduz um arquivo MP3 local com a pergunta em português brasileiro; **Ouvir a pergunta** permite repetir. O som de acerto também é um MP3 local. Todos usam o mesmo elemento de áudio, liberado pelo toque inicial, sem depender da síntese de voz do Safari nem de serviços externos. Se a reprodução falhar, o jogo mostra uma mensagem e os controles nativos de áudio para tentar novamente.
+O jogo tenta reproduzir a primeira pergunta automaticamente. Se o navegador bloquear, aparece **Começar com som**: um toque libera o áudio. As próximas rodadas reproduzem a pergunta automaticamente. Cada rodada reproduz um arquivo MP3 local com a pergunta em português brasileiro; o **ícone de alto-falante** permite repetir. O som de acerto também é um MP3 local. Todos usam o mesmo elemento de áudio, liberado pelo toque inicial, sem depender da síntese de voz do Safari nem de serviços externos. Se a reprodução falhar, o jogo mostra uma mensagem e os controles nativos de áudio para tentar novamente.
 
 As perguntas usam voz sintética provisória `pt-br` gerada com eSpeak NG; futuramente os MP3 podem ser substituídos por gravações humanas mais naturais com os mesmos nomes. Nenhum sintetizador ou pacote adicional é necessário para executar o site.
 
@@ -34,7 +34,7 @@ Não são necessários chaves, banco de dados ou instalação de pacotes. Para u
 ## Estrutura e imagens
 
 - `index.html`: estrutura acessível da página.
-- `style.css`: interface responsiva em creme, verde suave e tons naturais.
+- `style.css`: interface infantil responsiva, com fundo creme, cartões pastel e pequenos enfeites em CSS. A fonte arredondada Baloo 2 é servida localmente (licença em `assets/fonts/OFL.txt`).
 - `script.js`: catálogo, sorteio, respostas e áudio.
 - `assets/`: ilustrações fornecidas pelo projeto; veja a lista em `assets/README.md`.
 

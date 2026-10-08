@@ -20,6 +20,7 @@ const start = document.querySelector("#start");
 let advanceTimer;
 let playbackVersion = 0;
 let started = false;
+let needsAudioGesture = false;
 const player = document.querySelector("#game-audio");
 const audioStatus = document.querySelector("#audio-status");
 const assetNote = document.querySelector("#asset-note");
@@ -51,9 +52,7 @@ function showPlaceholder(button, figure) {
   placeholder.className = "placeholder";
   const label = document.createElement("strong");
   label.textContent = figure.label;
-  const note = document.createElement("small");
-  note.textContent = "Ilustração em breve";
-  placeholder.append(label, note);
+  placeholder.append(label);
   button.append(placeholder);
 }
 
@@ -68,16 +67,25 @@ function playAudio(file) {
   player.src = `assets/audio/${file}.mp3`;
   player.controls = false;
   audioStatus.textContent = "";
-  const failed = () => {
+  const failed = (error) => {
     if (version !== playbackVersion) return;
+    if (error?.name === "NotAllowedError") {
+      needsAudioGesture = true;
+      document.querySelector("#welcome").hidden = false;
+      return;
+    }
     player.controls = true;
     audioStatus.textContent = "O som não tocou. Use o botão de reprodução abaixo e confira o volume do aparelho.";
   };
   player.onerror = failed;
   try {
     const playing = player.play();
-    if (playing) playing.catch(failed);
-  } catch { failed(); }
+    if (playing) playing.then(() => {
+      if (version !== playbackVersion) return;
+      needsAudioGesture = false;
+      document.querySelector("#welcome").hidden = true;
+    }).catch(failed);
+  } catch (error) { failed(error); }
 }
 
 function speakInstruction() {
@@ -103,7 +111,15 @@ function startRound(moveFocus = false) {
   // Keep distractors semantically distinct, even if the catalog has variants.
   const uniqueDistractors = distractors.filter((figure, index, all) => all.findIndex((item) => item.concept === figure.concept) === index);
   const options = shuffled([current, ...uniqueDistractors.slice(0, GAME_CONFIG.optionCount - 1)]);
-  question.textContent = current.question;
+  const match = current.question.match(/^Onde está ([oa]) (.+)$/);
+  question.replaceChildren(document.createTextNode("Onde está "));
+  const article = document.createElement("span");
+  article.className = "question-article";
+  article.textContent = match[1] + " ";
+  const target = document.createElement("span");
+  target.className = "question-target";
+  target.textContent = match[2];
+  question.append(article, target);
   choices.style.gridTemplateColumns = `repeat(${options.length}, minmax(0, 1fr))`;
   choices.replaceChildren();
   for (const figure of options) {
@@ -123,26 +139,12 @@ function startRound(moveFocus = false) {
     }
     button.addEventListener("click", () => {
       if (solved) return;
+      if (needsAudioGesture) speakInstruction();
       if (figure.id !== current.id) {
-        for (const option of choices.querySelectorAll("button")) {
-          option.classList.remove("try-again");
-          option.querySelector(".error-mark")?.remove();
-        }
-        button.classList.add("try-again");
-        const mark = document.createElement("span");
-        mark.className = "error-mark";
-        mark.textContent = "×";
-        mark.setAttribute("aria-hidden", "true");
-        button.append(mark);
-        playAudio("tente-novamente");
-        feedback.textContent = "Vamos tentar de novo? Você pode escolher outra figura.";
+        feedback.textContent = "Você pode escolher outra figura.";
         return;
       }
       solved = true;
-      for (const option of choices.querySelectorAll("button")) {
-        option.classList.remove("try-again");
-        option.querySelector(".error-mark")?.remove();
-      }
       button.classList.add("correct");
       feedback.textContent = "Muito bem! Você encontrou a figura.";
       stopAudio();
@@ -166,16 +168,13 @@ async function init() {
   figures = hasPlayableImages ? available : catalog;
   assetNote.hidden = hasPlayableImages;
   repeat.disabled = false;
-  // Select and preload the first question before the child's initial tap.
+  // Try autoplay immediately; a small start control appears only if blocked.
+  started = true;
   startRound();
-  player.src = `assets/audio/${current.concept}.mp3`;
-  player.load();
-  start.disabled = false;
 }
 start.addEventListener("click", () => {
   started = true;
   document.querySelector("#welcome").hidden = true;
-  document.querySelector("#game").hidden = false;
   question.focus({ preventScroll: true });
   speakInstruction();
 });

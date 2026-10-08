@@ -3,27 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f3e9">
-  <meta name="description" content="Encontre a Figura: uma atividade educativa para brincar com palavras e imagens, no seu ritmo.">
-  <title>Encontre a Figura · App Desenvolvimento Infantil</title>
-  <link rel="stylesheet" href="style.css?v=6">
-  <script src="script.js?v=4" defer></script>
+  <meta name="theme-color" content="#fffdf4">
+  <meta name="description" content="Uma brincadeira de palavras e figuras, no seu ritmo.">
+  <title>Encontre a Figura</title>
+  <link rel="stylesheet" href="style.css?v=7">
+  <script src="script.js?v=7" defer></script>
 </head>
 <body>
-  <header class="site-header"><span class="brand-mark" aria-hidden="true">✿</span> App Desenvolvimento Infantil</header>
-  <main>
-    <div class="introduction"><p class="eyebrow">PALAVRAS E IMAGENS</p><h1>Encontre a Figura</h1><p>Vamos brincar? Toque na figura que combina com a pergunta.</p></div>
-    <div id="welcome" class="welcome"><p>Toque para começar com som.</p><button id="start" class="next-button" type="button" disabled>Começar a brincar ♫</button></div>
-    <section hidden id="game" class="game" aria-label="Jogo Encontre a Figura">
-      <div class="instruction"><p class="eyebrow">OLHE COM CALMA</p><h2 id="question" tabindex="-1">Preparando as figuras…</h2><button id="repeat" class="audio-button" type="button" disabled><span aria-hidden="true">♫</span> Ouvir a pergunta</button><p id="audio-status" class="audio-status" role="status"></p><audio id="game-audio" preload="auto" aria-label="Áudio da atividade"></audio></div>
-      <div id="choices" class="choices" aria-labelledby="question"></div>
-      <p id="feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true"></p>
-      <div id="stars" class="stars" aria-hidden="true" hidden>✦ ★ ✦</div>
-      <p id="asset-note" class="asset-note" hidden>As ilustrações estão chegando. Por enquanto, cada cartão mostra o nome da figura.</p>
-      <noscript><p>Ative o JavaScript no navegador para brincar.</p></noscript>
-    </section>
-    <p class="pace">Uma descoberta de cada vez. No seu ritmo.</p>
+  <div class="decoration sunshine" aria-hidden="true"><span></span></div>
+  <div class="decoration leaves leaves-top" aria-hidden="true"><i></i><i></i><i></i></div>
+  <main id="game" class="game" aria-label="Encontre a Figura">
+    <div class="instruction">
+      <h1 id="question" tabindex="-1">Preparando…</h1>
+      <button id="repeat" class="audio-button" type="button" aria-label="Repetir a pergunta" disabled>
+        <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 12h5l7-6v20l-7-6H5z" fill="currentColor"/><path d="M22 11c3 3 3 7 0 10m4-14c5 5 5 13 0 18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div id="welcome" class="welcome" hidden><button id="start" class="start-button" type="button">Começar com som <span aria-hidden="true">♫</span></button></div>
+    <p id="audio-status" class="audio-status" role="status"></p>
+    <audio id="game-audio" preload="auto" aria-label="Áudio da atividade"></audio>
+    <div id="choices" class="choices" aria-labelledby="question"></div>
+    <div class="celebration"><p id="feedback" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p><div id="stars" class="stars" aria-hidden="true" hidden>✦ ★ ✦</div></div>
+    <p id="asset-note" class="sr-only" hidden>Ilustrações temporariamente indisponíveis.</p>
+    <noscript>Ative o JavaScript para brincar.</noscript>
   </main>
-  <footer>Um recurso lúdico e educativo. Não realiza diagnóstico ou tratamento.</footer>
+  <div class="decoration flower" aria-hidden="true">✿</div>
+  <div class="decoration leaves leaves-bottom" aria-hidden="true"><i></i><i></i><i></i></div>
 </body>
 </html>
