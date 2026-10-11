@@ -1,14 +1,17 @@
 "use strict";
 
-// Add figures here. Variants share a concept so a cat never distracts from a cat.
+// Add figures here. Variants of the same object must share a concept.
 const FIGURES = [
-  { id: "cachorro", concept: "cachorro", label: "Cachorro", question: "Onde está o cachorro?", file: "cachorro.jpg" },
-  { id: "gato", concept: "gato", label: "Gato", question: "Onde está o gato?", file: "gato.png" },
-  { id: "gato-com-novelos", concept: "gato", label: "Gato com novelos", question: "Onde está o gato?", file: "gato-com-novelos.jpg" },
-  { id: "bola", concept: "bola", label: "Bola", question: "Onde está a bola?", file: "bola.jpg" },
-  { id: "carro", concept: "carro", label: "Carro", question: "Onde está o carro?", file: "carro.jpg" },
-  { id: "menina", concept: "menina", label: "Menina", question: "Onde está a menina?", file: "menina.jpg" },
-  { id: "menino", concept: "menino", label: "Menino", question: "Onde está o menino?", file: "menino.jpg" },
+  {"id": "menina", "concept": "menina", "label": "Menina", "question": "Onde está a menina?", "file": "figuras/menina.jpg"},
+  {"id": "menino", "concept": "menino", "label": "Menino", "question": "Onde está o menino?", "file": "figuras/menino.jpg"},
+  {"id": "casa", "concept": "casa", "label": "Casa", "question": "Onde está a casa?", "file": "figuras/casa.jpg"},
+  {"id": "bola", "concept": "bola", "label": "Bola", "question": "Onde está a bola?", "file": "figuras/bola.jpg"},
+  {"id": "arvore", "concept": "arvore", "label": "Árvore", "question": "Onde está a árvore?", "file": "figuras/arvore.jpg"},
+  {"id": "nuvem", "concept": "nuvem", "label": "Nuvem", "question": "Onde está a nuvem?", "file": "figuras/nuvem.jpg"},
+  {"id": "arco-iris", "concept": "arco-iris", "label": "Arco-íris", "question": "Onde está o arco-íris?", "file": "figuras/arco-iris.jpg"},
+  {"id": "lua", "concept": "lua", "label": "Lua", "question": "Onde está a lua?", "file": "figuras/lua.jpg"},
+  {"id": "sol", "concept": "sol", "label": "Sol", "question": "Onde está o sol?", "file": "figuras/sol.jpg"},
+  {"id": "carro", "concept": "carro", "label": "Carro", "question": "Onde está o carro?", "file": "figuras/carro.jpg"},
 ];
 const GAME_CONFIG = { optionCount: 2, advanceDelay: 2200 };
 const question = document.querySelector("#question");

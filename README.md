@@ -8,13 +8,13 @@ O objetivo é oferecer jogos gratuitos, sem anúncios, sem login e sem coleta de
 
 ## Primeira atividade: Encontre a Figura
 
-A criança lê uma pergunta como “Onde está o cachorro?” e toca em uma das duas opções grandes. Uma resposta diferente mantém a pergunta e permite uma nova tentativa, sem marca vermelha ou som de erro. Uma resposta correta recebe uma mensagem positiva para leitores de tela, três estrelinhas e um som suave; após 2,2 segundos o jogo avança sozinho. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
+A criança lê uma pergunta como “Onde está a bola?” e toca em uma das duas opções grandes. Uma resposta diferente mantém a pergunta e permite uma nova tentativa, sem marca vermelha ou som de erro. Uma resposta correta recebe uma mensagem positiva para leitores de tela, três estrelinhas e um som suave; após 2,2 segundos o jogo avança sozinho. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
 
 O jogo tenta reproduzir a primeira pergunta automaticamente. Se o navegador bloquear, aparece **Começar com som**: um toque libera o áudio. As próximas rodadas reproduzem a pergunta automaticamente. Cada rodada reproduz um arquivo MP3 local com a pergunta em português brasileiro; o **ícone de alto-falante** permite repetir. O som de acerto também é um MP3 local. Todos usam o mesmo elemento de áudio, liberado pelo toque inicial, sem depender da síntese de voz do Safari nem de serviços externos. Se a reprodução falhar, o jogo mostra uma mensagem e os controles nativos de áudio para tentar novamente.
 
 As perguntas usam voz sintética provisória `pt-br` gerada com eSpeak NG; futuramente os MP3 podem ser substituídos por gravações humanas mais naturais com os mesmos nomes. Nenhum sintetizador ou pacote adicional é necessário para executar o site.
 
-As perguntas e as posições das opções são sorteadas. Gato e gato com novelos são variantes do mesmo conceito e nunca são usados como distratores entre si. O conceito da rodada anterior não se repete imediatamente.
+As perguntas e as posições das opções são sorteadas. As dez figuras atuais são menina, menino, casa, bola, árvore, nuvem, arco-íris, lua, sol e carro. Variantes de um mesmo conceito não podem ser distratores entre si. O conceito da rodada anterior não se repete imediatamente.
 
 ## Executar
 
@@ -38,7 +38,9 @@ Não são necessários chaves, banco de dados ou instalação de pacotes. Para u
 - `script.js`: catálogo, sorteio, respostas e áudio.
 - `assets/`: ilustrações fornecidas pelo projeto; veja a lista em `assets/README.md`.
 
-Seis ilustrações fornecidas pela autora já estão em `assets/`, preservadas no formato JPEG original: cachorro, gato com novelos, bola, carro, menina e menino. A variante `gato.png` ainda é opcional e não entra no sorteio enquanto estiver ausente. Sem imagens suficientes, aparecem **placeholders textuais identificados**, não desenhos inventados. Eles permitem testar o fluxo, mas não substituem a atividade de associação palavra-imagem. Com pelo menos duas imagens de conceitos distintos, o sorteio passa a usar somente figuras carregadas.
+Dez novas ilustrações fornecidas pela autora estão em `assets/figuras/`, preservadas no formato JPEG original. As figuras do primeiro conjunto foram removidas. O fundo escolhido pela autora continua em `assets/fundo-aquarela.jpg`.
+
+Se não houver imagens suficientes, aparecem placeholders textuais identificados para testar o fluxo. Com pelo menos duas imagens de conceitos distintos, o sorteio usa somente figuras carregadas.
 
 Para adicionar uma figura, coloque a imagem em `assets/` e registre seu arquivo, nome, pergunta e conceito em `FIGURES`, no início de `script.js`. `GAME_CONFIG.optionCount` controla a quantidade de opções; esta versão foi projetada e validada para **duas**. Quantidades maiores precisarão de validação visual e de usabilidade antes de serem disponibilizadas.
 
@@ -56,4 +58,4 @@ Ao testar no navegador, verifique duas opções, tentativa após erro, mensagem 
 
 ## Status
 
-Primeira versão web funcional do jogo, em desenvolvimento. Seis ilustrações integradas; validação com usuários ainda pendente. PWA, Android, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras e não fazem parte desta versão.
+Primeira versão web funcional do jogo, em desenvolvimento. Dez ilustrações novas integradas; validação com usuários ainda pendente. PWA, Android, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras e não fazem parte desta versão.
