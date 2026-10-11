@@ -1,7 +1,9 @@
 @font-face { font-family: "Baloo"; src: url("assets/fonts/baloo-2.ttf") format("truetype"); font-weight: 400 800; font-display: swap; }
 :root { color-scheme: light; font-family: "Baloo", ui-rounded, system-ui, sans-serif; color: #50331f; background: #fffdf4; }
 * { box-sizing: border-box; }
-body { margin: 0; min-height: 100svh; background: radial-gradient(ellipse at 12% 4%, #fff5d955, transparent 38%), radial-gradient(ellipse at 100% 90%, #edf3df66, transparent 32%), #fffdf4; }
+body { margin: 0; min-height: 100svh; background: #fffdf4; }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; background: url("assets/fundo-aquarela.jpg") center bottom / cover no-repeat; }
+
 .game { position: relative; z-index: 1; width: min(100%, 1060px); margin: auto; padding: clamp(70px, 12vh, 115px) 24px 35px; }
 .instruction { display: flex; align-items: center; justify-content: center; gap: 24px; margin: 0 auto 30px; }
 h1 { font-size: clamp(2.6rem, 6.8vw, 5.8rem); font-weight: 800; line-height: 1.05; letter-spacing: -.035em; text-align: center; margin: 0; max-width: 750px; text-wrap: balance; }
@@ -31,19 +33,6 @@ h1:focus { outline: none; }
 #game-audio[controls] { display: block; max-width: 100%; margin: 12px auto; }
 [hidden] { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
-/* Simple CSS accents; no generated or external illustrations. */
-.decoration { position: absolute; pointer-events: none; user-select: none; opacity: .65; }
-.sunshine { top: 22px; left: max(20px, calc((100vw - 1140px) / 2)); width: 66px; height: 66px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #ffeabd, #f9cc69); box-shadow: 0 0 0 8px #ffe7a433; transform: rotate(-12deg); }
-.sunshine::before, .sunshine::after { content: ""; position: absolute; top: 27px; width: 5px; height: 5px; border-radius: 50%; background: #8b6030; }
-.sunshine::before { left: 20px; } .sunshine::after { right: 20px; }
-.sunshine span { position: absolute; top: 37px; left: 27px; width: 12px; height: 7px; border-bottom: 2px solid #8b6030; border-radius: 50%; }
-.leaves { width: 70px; height: 80px; border-left: 3px solid #93a878; transform: rotate(-30deg); }
-.leaves i { position: absolute; width: 22px; height: 36px; border-radius: 80% 10% 80% 10%; background: linear-gradient(35deg, #a2b57f, #c6d6a9); left: -23px; top: 7px; }
-.leaves i:nth-child(2) { left: 2px; top: 22px; transform: rotate(60deg); }
-.leaves i:nth-child(3) { top: 43px; }
-.leaves-top { right: 8px; top: 28px; }
-.leaves-bottom { position: fixed; bottom: -8px; right: 10px; transform: rotate(25deg); opacity: .45; }
-.flower { position: fixed; left: 20px; bottom: 0; color: #ebac85; font-size: 65px; line-height: 1; opacity: .5; }
 @media (max-width: 600px) {
   .game { padding: 100px 14px 20px; }
   .instruction { flex-direction: column; gap: 18px; margin-bottom: 26px; }
@@ -52,8 +41,7 @@ h1:focus { outline: none; }
   .choices { gap: 14px; }
   .choice { height: clamp(230px, 32svh, 320px); border-radius: 30px; padding: 6px; }
   .choice img { border-radius: 22px; }
-  .sunshine { width: 58px; height: 58px; } .leaves-top { transform: scale(.75) rotate(-30deg); }
 }
 @media (max-width: 350px) { .choices { gap: 10px; } .choice { height: 230px; padding: 4px; } }
-@media (max-height: 550px) and (min-width: 601px) { .game { padding-top: 24px; } .instruction { margin-bottom: 18px; } h1 { font-size: 2.8rem; } .choice { height: 260px; } .decoration { opacity: .25; } }
+@media (max-height: 550px) and (min-width: 601px) { .game { padding-top: 24px; } .instruction { margin-bottom: 18px; } h1 { font-size: 2.8rem; } .choice { height: 260px; } }
 @media (prefers-reduced-motion: reduce) { .stars { animation: none; } }

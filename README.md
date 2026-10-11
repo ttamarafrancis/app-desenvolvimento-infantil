@@ -34,7 +34,7 @@ Não são necessários chaves, banco de dados ou instalação de pacotes. Para u
 ## Estrutura e imagens
 
 - `index.html`: estrutura acessível da página.
-- `style.css`: interface infantil responsiva, com fundo creme, cartões pastel e pequenos enfeites em CSS. A fonte arredondada Baloo 2 é servida localmente (licença em `assets/fonts/OFL.txt`).
+- `style.css`: interface infantil responsiva, com fundo em aquarela fornecido pela autora (`assets/fundo-aquarela.jpg`) e cartões pastel. A fonte arredondada Baloo 2 é servida localmente (licença em `assets/fonts/OFL.txt`).
 - `script.js`: catálogo, sorteio, respostas e áudio.
 - `assets/`: ilustrações fornecidas pelo projeto; veja a lista em `assets/README.md`.
 
