@@ -12,6 +12,16 @@ const FIGURES = [
   {"id": "lua", "concept": "lua", "label": "Lua", "question": "Onde está a lua?", "file": "figuras/lua.jpg"},
   {"id": "sol", "concept": "sol", "label": "Sol", "question": "Onde está o sol?", "file": "figuras/sol.jpg"},
   {"id": "carro", "concept": "carro", "label": "Carro", "question": "Onde está o carro?", "file": "figuras/carro.jpg"},
+  {"id": "maca", "concept": "maca", "label": "Maçã", "question": "Onde está a maçã?", "file": "figuras/maca.jpg"},
+  {"id": "uva", "concept": "uva", "label": "Uva", "question": "Onde está a uva?", "file": "figuras/uva.jpg"},
+  {"id": "melancia", "concept": "melancia", "label": "Melancia", "question": "Onde está a melancia?", "file": "figuras/melancia.jpg"},
+  {"id": "morango", "concept": "morango", "label": "Morango", "question": "Onde está o morango?", "file": "figuras/morango.jpg"},
+  {"id": "banana", "concept": "banana", "label": "Banana", "question": "Onde está a banana?", "file": "figuras/banana.jpg"},
+  {"id": "galinha", "concept": "galinha", "label": "Galinha", "question": "Onde está a galinha?", "file": "figuras/galinha.jpg"},
+  {"id": "pato", "concept": "pato", "label": "Pato", "question": "Onde está o pato?", "file": "figuras/pato.jpg"},
+  {"id": "gato", "concept": "gato", "label": "Gato", "question": "Onde está o gato?", "file": "figuras/gato.jpg"},
+  {"id": "jacare", "concept": "jacare", "label": "Jacaré", "question": "Onde está o jacaré?", "file": "figuras/jacare.jpg"},
+  {"id": "girafa", "concept": "girafa", "label": "Girafa", "question": "Onde está a girafa?", "file": "figuras/girafa.jpg"},
 ];
 const GAME_CONFIG = { optionCount: 2, advanceDelay: 2200 };
 const question = document.querySelector("#question");
