@@ -14,7 +14,7 @@ O jogo tenta reproduzir a primeira pergunta automaticamente. Se o navegador bloq
 
 As perguntas usam voz sintética provisória `pt-br` gerada com eSpeak NG; futuramente os MP3 podem ser substituídos por gravações humanas mais naturais com os mesmos nomes. Nenhum sintetizador ou pacote adicional é necessário para executar o site.
 
-As perguntas e as posições das opções são sorteadas. As vinte figuras atuais são menina, menino, casa, bola, árvore, nuvem, arco-íris, lua, sol, carro, maçã, uva, melancia, morango, banana, galinha, pato, gato, jacaré e girafa. Variantes de um mesmo conceito não podem ser distratores entre si. O conceito da rodada anterior não se repete imediatamente.
+As perguntas e as posições das opções são sorteadas. As 23 figuras atuais são menina, menino, casa, bola, árvore, nuvem, arco-íris, lua, sol, carro, maçã, uva, melancia, morango, banana, galinha, pato, gato, jacaré, girafa, elefante, cachorro e macaco. Variantes de um mesmo conceito não podem ser distratores entre si. O conceito da rodada anterior não se repete imediatamente.
 
 ## Executar
 
@@ -38,7 +38,7 @@ Não são necessários chaves, banco de dados ou instalação de pacotes. Para u
 - `script.js`: catálogo, sorteio, respostas e áudio.
 - `assets/`: ilustrações fornecidas pelo projeto; veja a lista em `assets/README.md`.
 
-Vinte novas ilustrações fornecidas pela autora estão em `assets/figuras/`, preservadas no formato JPEG original. As figuras do primeiro conjunto foram removidas. O fundo escolhido pela autora continua em `assets/fundo-aquarela.jpg`.
+23 novas ilustrações fornecidas pela autora estão em `assets/figuras/`, preservadas no formato JPEG original. As figuras do primeiro conjunto foram removidas. O fundo escolhido pela autora continua em `assets/fundo-aquarela.jpg`.
 
 Se não houver imagens suficientes, aparecem placeholders textuais identificados para testar o fluxo. Com pelo menos duas imagens de conceitos distintos, o sorteio usa somente figuras carregadas.
 
@@ -58,4 +58,4 @@ Ao testar no navegador, verifique duas opções, tentativa após erro, mensagem 
 
 ## Status
 
-Primeira versão web funcional do jogo, em desenvolvimento. Vinte ilustrações novas integradas; validação com usuários ainda pendente. PWA, Android, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras e não fazem parte desta versão.
+Primeira versão web funcional do jogo, em desenvolvimento. 23 ilustrações novas integradas; validação com usuários ainda pendente. PWA, Android, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras e não fazem parte desta versão.

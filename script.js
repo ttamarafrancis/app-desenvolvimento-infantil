@@ -22,6 +22,9 @@ const FIGURES = [
   {"id": "gato", "concept": "gato", "label": "Gato", "question": "Onde está o gato?", "file": "figuras/gato.jpg"},
   {"id": "jacare", "concept": "jacare", "label": "Jacaré", "question": "Onde está o jacaré?", "file": "figuras/jacare.jpg"},
   {"id": "girafa", "concept": "girafa", "label": "Girafa", "question": "Onde está a girafa?", "file": "figuras/girafa.jpg"},
+  {"id": "elefante", "concept": "elefante", "label": "Elefante", "question": "Onde está o elefante?", "file": "figuras/elefante.jpg"},
+  {"id": "cachorro", "concept": "cachorro", "label": "Cachorro", "question": "Onde está o cachorro?", "file": "figuras/cachorro.jpg"},
+  {"id": "macaco", "concept": "macaco", "label": "Macaco", "question": "Onde está o macaco?", "file": "figuras/macaco.jpg"},
 ];
 const GAME_CONFIG = { optionCount: 2, advanceDelay: 2200 };
 const question = document.querySelector("#question");
