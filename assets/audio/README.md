@@ -26,6 +26,8 @@ Para usar gravações humanas, substitua os arquivos em `voz-dora/` mantendo os 
 
 ## Efeitos
 
-`comemoracao.mp3` contém um “Êêê!” curto na voz Dora (`pf_dora`, `lang="pt-br"`, `speed=1.05`) junto com três palmas suaves sintetizadas localmente. O volume foi normalizado para -20 LUFS com pico verdadeiro limitado a -3 dBTP. É um único arquivo MP3 de menos de 2,2 segundos, para terminar antes do avanço automático sem sobrepor a próxima pergunta. Substitui o antigo efeito de três notas.
+`plateia.mp3` usa o efeito “Cheer” da biblioteca de sons do TuxMath/Tux4Kids. Foi adaptado dos primeiros 1,85 segundos de `data/sounds/cheer.wav`, com entrada e saída suaves, normalização para -21 LUFS e pico verdadeiro limitado a -3 dBTP. O MP3 termina antes do avanço automático de 2,2 segundos. Substitui a comemoração anterior sintetizada com Dora. A fonte não identifica a idade dos participantes; o efeito não é apresentado como um coro infantil confirmado.
+
+O original, os avisos da fonte e a licença GPL estão preservados em `fontes/plateia/`. Veja [créditos e reprodução da adaptação](fontes/plateia/README.md). O áudio e suas adaptações mantêm a licença da fonte; nenhuma gravação ou modelo novo é necessário durante o jogo.
 
 `tente-novamente.mp3` contém uma nota suave de 330 Hz com cerca de 0,4 segundo. Os efeitos e a pergunta são reproduzidos pelo mesmo elemento HTML audio; respostas incorretas mantêm a rodada e mostram um × suave.
