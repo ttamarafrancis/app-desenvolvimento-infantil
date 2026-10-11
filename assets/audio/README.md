@@ -4,7 +4,7 @@ Perguntas em português brasileiro, geradas com a voz sintética provisória `pt
 
 acerto.mp3 contém três notas senoidais suaves geradas para o projeto. Todos os arquivos são reproduzidos localmente pelo mesmo elemento HTML audio. Nenhuma dependência de síntese de voz é distribuída ou executada no navegador.
 
-`tente-novamente.mp3` é um arquivo da versão anterior e não é utilizado pelo jogo atual. Respostas incorretas permitem tentar novamente, sem marca vermelha ou som negativo.
+`tente-novamente.mp3` é uma nota suave de 330 Hz, com cerca de 0,4 segundo. Uma resposta incorreta toca esse arquivo pelo mesmo elemento de áudio do jogo e mostra um × vermelho suave no cartão escolhido, mantendo a pergunta para uma nova tentativa.
 
 ## Substituir pela voz da autora
 

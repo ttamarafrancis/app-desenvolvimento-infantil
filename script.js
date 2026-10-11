@@ -113,6 +113,25 @@ function playSuccess() {
   playAudio("acerto");
 }
 
+function clearErrorFeedback() {
+  for (const option of choices.querySelectorAll("button")) {
+    option.classList.remove("try-again");
+    option.querySelector(".error-mark")?.remove();
+  }
+}
+
+function showErrorFeedback(button) {
+  clearErrorFeedback();
+  button.classList.add("try-again");
+  const mark = document.createElement("span");
+  mark.className = "error-mark";
+  mark.textContent = "×";
+  mark.setAttribute("aria-hidden", "true");
+  button.append(mark);
+  feedback.textContent = "Você pode escolher outra figura.";
+  playAudio("tente-novamente");
+}
+
 function startRound(moveFocus = false) {
   stopAudio();
   clearTimeout(advanceTimer);
@@ -157,10 +176,11 @@ function startRound(moveFocus = false) {
       if (solved) return;
       if (needsAudioGesture) speakInstruction();
       if (figure.id !== current.id) {
-        feedback.textContent = "Você pode escolher outra figura.";
+        showErrorFeedback(button);
         return;
       }
       solved = true;
+      clearErrorFeedback();
       button.classList.add("correct");
       feedback.textContent = "Muito bem! Você encontrou a figura.";
       stopAudio();
