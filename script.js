@@ -129,7 +129,7 @@ function speakInstruction() {
 }
 
 function playSuccess() {
-  playAudio("palminhas");
+  playAudio("brilho");
 }
 
 function clearErrorFeedback() {

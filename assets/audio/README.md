@@ -26,6 +26,6 @@ Para usar gravações humanas, substitua os arquivos em `voz-dora/` mantendo os 
 
 ## Efeitos
 
-`palminhas.mp3` contém três palmas sintetizadas localmente, com volume baixo e duração aproximada de um segundo. Cada palma usa ruído filtrado entre aproximadamente 650 e 4.600 Hz, com entrada de 2 ms e decaimento curto; os picos do sinal original são 0,22, 0,19 e 0,17. O arquivo mono de 24 kHz foi codificado em MP3 a 96 kbps. Contém apenas percussão, sem voz, buzina ou gravações de terceiros, e termina antes do avanço automático de 2,2 segundos. O efeito anterior foi retirado após a autora relatar uma buzina que assustava.
+`brilho.mp3` contém um tilintar curto de sininhos sintetizados localmente, em volume baixo, para acompanhar as estrelas do acerto. São quatro notas ascendentes de sol maior (sol, si, ré e sol), seguidas de dois sininhos mais agudos e discretos. Cada nota tem entrada suave de 6 ms, decaimento curto e parciais nas razões 1, 1,002, 2,756 e 5,404 para simular a ressonância de um sino. O sinal original dura 1,36 segundo e tem pico de 0,19; o arquivo mono de 24 kHz foi codificado em MP3 a 96 kbps. Termina antes do avanço automático de 2,2 segundos. Não utiliza gravações de terceiros.
 
 `tente-novamente.mp3` contém uma nota suave de 330 Hz com cerca de 0,4 segundo. Os efeitos e a pergunta são reproduzidos pelo mesmo elemento HTML audio; respostas incorretas mantêm a rodada e mostram um × suave.
