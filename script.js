@@ -25,6 +25,16 @@ const FIGURES = [
   {"id": "elefante", "concept": "elefante", "label": "Elefante", "question": "Onde está o elefante?", "file": "figuras/elefante.jpg"},
   {"id": "cachorro", "concept": "cachorro", "label": "Cachorro", "question": "Onde está o cachorro?", "file": "figuras/cachorro.jpg"},
   {"id": "macaco", "concept": "macaco", "label": "Macaco", "question": "Onde está o macaco?", "file": "figuras/macaco.jpg"},
+  {"id": "prato", "concept": "prato", "label": "Prato", "question": "Onde está o prato?", "file": "figuras/prato.jpg"},
+  {"id": "colher", "concept": "colher", "label": "Colher", "question": "Onde está a colher?", "file": "figuras/colher.jpg"},
+  {"id": "coelho", "concept": "coelho", "label": "Coelho", "question": "Onde está o coelho?", "file": "figuras/coelho.jpg"},
+  {"id": "cavalo", "concept": "cavalo", "label": "Cavalo", "question": "Onde está o cavalo?", "file": "figuras/cavalo.jpg"},
+  {"id": "vaca", "concept": "vaca", "label": "Vaca", "question": "Onde está a vaca?", "file": "figuras/vaca.jpg"},
+  {"id": "passarinho", "concept": "passarinho", "label": "Passarinho", "question": "Onde está o passarinho?", "file": "figuras/passarinho.jpg"},
+  {"id": "peixe", "concept": "peixe", "label": "Peixe", "question": "Onde está o peixe?", "file": "figuras/peixe.jpg"},
+  {"id": "caneca", "concept": "caneca", "label": "Caneca", "question": "Onde está a caneca?", "file": "figuras/caneca.jpg"},
+  {"id": "livro", "concept": "livro", "label": "Livro", "question": "Onde está o livro?", "file": "figuras/livro.jpg"},
+  {"id": "leao", "concept": "leao", "label": "Leão", "question": "Onde está o leão?", "file": "figuras/leao.jpg"},
 ];
 const GAME_CONFIG = { optionCount: 2, advanceDelay: 2200, questionAudioPath: "assets/audio/voz-dora" };
 const question = document.querySelector("#question");

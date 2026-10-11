@@ -2,7 +2,7 @@
 
 ## Voz das perguntas
 
-Os 23 MP3 de perguntas estão em `voz-dora/`, nomeados pelo conceito do catálogo (por exemplo, `voz-dora/gato.mp3`). A voz é **Dora** (`pf_dora`), feminina e brasileira, do modelo neural **Kokoro v1.0**. Todos usam `lang="pt-br"` e `speed=0.92`. O volume foi normalizado para -19 LUFS, com pico verdadeiro limitado a -2 dBTP e pequenas pausas no início e no final.
+Os 33 MP3 de perguntas estão em `voz-dora/`, nomeados pelo conceito do catálogo (por exemplo, `voz-dora/gato.mp3`). A voz é **Dora** (`pf_dora`), feminina e brasileira, do modelo neural **Kokoro v1.0**. Todos usam `lang="pt-br"` e `speed=0.92`. O volume foi normalizado para -19 LUFS, com pico verdadeiro limitado a -2 dBTP e pequenas pausas no início e no final.
 
 Modelo: [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M), licença Apache 2.0. Inferência: [kokoro-onnx](https://github.com/thewh1teagle/kokoro-onnx), licença MIT. Os arquivos do modelo vêm da release `model-files-v1.1` indicada na documentação do kokoro-onnx. Os pesos e as bibliotecas de geração não são enviados ao site; apenas os MP3 prontos. Não há chamadas externas de síntese de voz durante o jogo.
 

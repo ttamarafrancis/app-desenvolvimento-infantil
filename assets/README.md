@@ -1,6 +1,6 @@
 # Ilustrações
 
-As 23 figuras atuais foram fornecidas pela autora e preservadas no formato JPEG original, sem recortes ou alterações. Elas substituem todas as figuras do primeiro conjunto:
+As 33 figuras atuais foram fornecidas pela autora e preservadas no formato JPEG original, sem recortes ou alterações. Elas substituem todas as figuras do primeiro conjunto:
 
 - figuras/menina.jpg
 - figuras/menino.jpg
@@ -25,5 +25,15 @@ As 23 figuras atuais foram fornecidas pela autora e preservadas no formato JPEG 
 - figuras/elefante.jpg
 - figuras/cachorro.jpg
 - figuras/macaco.jpg
+- figuras/prato.jpg
+- figuras/colher.jpg
+- figuras/coelho.jpg
+- figuras/cavalo.jpg
+- figuras/vaca.jpg
+- figuras/passarinho.jpg
+- figuras/peixe.jpg
+- figuras/caneca.jpg
+- figuras/livro.jpg
+- figuras/leao.jpg
 
 `fundo-aquarela.jpg` é o fundo escolhido pela autora e permanece independente do catálogo de figuras. Nenhuma imagem externa é utilizada. `FIGURES` em `script.js` registra arquivo, nome, pergunta e conceito de cada figura. Com imagens de pelo menos dois conceitos diferentes, somente imagens carregadas entram no sorteio.
