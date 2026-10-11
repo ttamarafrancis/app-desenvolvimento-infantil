@@ -129,7 +129,7 @@ function speakInstruction() {
 }
 
 function playSuccess() {
-  playAudio("plateia");
+  playAudio("palminhas");
 }
 
 function clearErrorFeedback() {

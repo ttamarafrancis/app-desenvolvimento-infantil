@@ -8,7 +8,7 @@ O objetivo é oferecer jogos gratuitos, sem anúncios, sem login e sem coleta de
 
 ## Primeira atividade: Encontre a Figura
 
-A criança lê uma pergunta como “Onde está a bola?” e toca em uma das duas opções grandes. Uma resposta diferente mostra um × vermelho suave no cartão escolhido e toca uma nota curta. A pergunta permanece e permite uma nova tentativa, sem punição. No acerto e na próxima rodada, a marca de erro desaparece. Uma resposta correta recebe uma mensagem positiva para leitores de tela, três estrelinhas sobre o cartão escolhido e um trecho curto do efeito de plateia “Cheer”, da biblioteca TuxMath; após 2,2 segundos o jogo avança sozinho. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
+A criança lê uma pergunta como “Onde está a bola?” e toca em uma das duas opções grandes. Uma resposta diferente mostra um × vermelho suave no cartão escolhido e toca uma nota curta. A pergunta permanece e permite uma nova tentativa, sem punição. No acerto e na próxima rodada, a marca de erro desaparece. Uma resposta correta recebe uma mensagem positiva para leitores de tela, três estrelinhas sobre o cartão escolhido e três palminhas suaves sintetizadas localmente; após 2,2 segundos o jogo avança sozinho. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
 
 O jogo tenta reproduzir a primeira pergunta automaticamente. Se o navegador bloquear, aparece **Começar com som**: um toque libera o áudio. As próximas rodadas reproduzem a pergunta automaticamente. Cada rodada reproduz um arquivo MP3 local com a pergunta em português brasileiro; o **ícone de alto-falante** permite repetir. O som de acerto também é um MP3 local. Todos usam o mesmo elemento de áudio, liberado pelo toque inicial, sem depender da síntese de voz do Safari nem de serviços externos. Se a reprodução falhar, o jogo mostra uma mensagem e os controles nativos de áudio para tentar novamente.
 
@@ -46,7 +46,7 @@ Para adicionar uma figura, coloque a imagem em `assets/` e registre seu arquivo,
 
 ## Acessibilidade e validação
 
-A página inclui idioma português brasileiro, botões nativos com nomes acessíveis, foco visível, navegação por teclado, mensagens de status para leitores de tela e opção de reduzir movimentos. Não há limite de tempo para responder. A comemoração é curta, com um efeito de plateia em MP3 local e estrelas sobre o cartão correto, sem flashes. A fonte do áudio não informa a idade dos participantes. Créditos, licença, arquivo original e detalhes da adaptação estão em `assets/audio/fontes/plateia/`.
+A página inclui idioma português brasileiro, botões nativos com nomes acessíveis, foco visível, navegação por teclado, mensagens de status para leitores de tela e opção de reduzir movimentos. Não há limite de tempo para responder. A comemoração é curta, com palminhas suaves em MP3 local e estrelas sobre o cartão correto, sem flashes. Detalhes dos efeitos estão em `assets/audio/README.md`.
 
 Verificação básica de JavaScript:
 
