@@ -12,7 +12,7 @@ A criança lê uma pergunta como “Onde está a bola?” e toca em uma das duas
 
 O jogo tenta reproduzir a primeira pergunta automaticamente. Se o navegador bloquear, aparece **Começar com som**: um toque libera o áudio. As próximas rodadas reproduzem a pergunta automaticamente. Cada rodada reproduz um arquivo MP3 local com a pergunta em português brasileiro; o **ícone de alto-falante** permite repetir. O som de acerto também é um MP3 local. Todos usam o mesmo elemento de áudio, liberado pelo toque inicial, sem depender da síntese de voz do Safari nem de serviços externos. Se a reprodução falhar, o jogo mostra uma mensagem e os controles nativos de áudio para tentar novamente.
 
-As perguntas usam voz sintética provisória `pt-br` gerada com eSpeak NG; futuramente os MP3 podem ser substituídos por gravações humanas mais naturais com os mesmos nomes. Nenhum sintetizador ou pacote adicional é necessário para executar o site.
+As perguntas usam **Dora**, a voz feminina brasileira `pf_dora` do modelo neural Kokoro v1.0, em ritmo levemente mais calmo (0,92). Os MP3 ficam em `assets/audio/voz-dora/`, com volume de fala normalizado. O áudio pronto é o mesmo em todos os aparelhos e não depende de serviços de voz durante o jogo. Veja `assets/audio/README.md` para gerar novas perguntas ou substituir a voz. Nenhum sintetizador ou pacote adicional é necessário para executar o site.
 
 As perguntas e as posições das opções são sorteadas. As 23 figuras atuais são menina, menino, casa, bola, árvore, nuvem, arco-íris, lua, sol, carro, maçã, uva, melancia, morango, banana, galinha, pato, gato, jacaré, girafa, elefante, cachorro e macaco. Variantes de um mesmo conceito não podem ser distratores entre si. O conceito da rodada anterior não se repete imediatamente.
 

@@ -26,7 +26,7 @@ const FIGURES = [
   {"id": "cachorro", "concept": "cachorro", "label": "Cachorro", "question": "Onde está o cachorro?", "file": "figuras/cachorro.jpg"},
   {"id": "macaco", "concept": "macaco", "label": "Macaco", "question": "Onde está o macaco?", "file": "figuras/macaco.jpg"},
 ];
-const GAME_CONFIG = { optionCount: 2, advanceDelay: 2200 };
+const GAME_CONFIG = { optionCount: 2, advanceDelay: 2200, questionAudioPath: "assets/audio/voz-dora" };
 const question = document.querySelector("#question");
 const choices = document.querySelector("#choices");
 const feedback = document.querySelector("#feedback");
@@ -77,10 +77,11 @@ function stopAudio() {
   player.pause();
 }
 
-function playAudio(file) {
+function playAudio(file, isQuestion = false) {
   stopAudio();
   const version = playbackVersion;
-  player.src = `assets/audio/${file}.mp3`;
+  const audioPath = isQuestion ? GAME_CONFIG.questionAudioPath : "assets/audio";
+  player.src = `${audioPath}/${file}.mp3`;
   player.controls = false;
   audioStatus.textContent = "";
   const failed = (error) => {
@@ -106,7 +107,7 @@ function playAudio(file) {
 
 function speakInstruction() {
   if (!current || solved) return;
-  playAudio(current.concept);
+  playAudio(current.concept, true);
 }
 
 function playSuccess() {
