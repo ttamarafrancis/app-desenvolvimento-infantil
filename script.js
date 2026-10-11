@@ -67,7 +67,17 @@ const GAME_CONFIG = {
     "pato": "assets/audio/voz-elevenlabs/pato.mp3",
     "gato": "assets/audio/voz-elevenlabs/gato.mp3",
     "jacare": "assets/audio/voz-elevenlabs/jacare.mp3",
-    "girafa": "assets/audio/voz-elevenlabs/girafa.mp3"
+    "girafa": "assets/audio/voz-elevenlabs/girafa.mp3",
+    "elefante": "assets/audio/voz-elevenlabs/elefante.mp3",
+    "cachorro": "assets/audio/voz-elevenlabs/cachorro.mp3",
+    "macaco": "assets/audio/voz-elevenlabs/macaco.mp3",
+    "prato": "assets/audio/voz-elevenlabs/prato.mp3",
+    "colher": "assets/audio/voz-elevenlabs/colher.mp3",
+    "coelho": "assets/audio/voz-elevenlabs/coelho.mp3",
+    "cavalo": "assets/audio/voz-elevenlabs/cavalo.mp3",
+    "vaca": "assets/audio/voz-elevenlabs/vaca.mp3",
+    "passarinho": "assets/audio/voz-elevenlabs/passarinho.mp3",
+    "peixe": "assets/audio/voz-elevenlabs/peixe.mp3"
   }
 };
 const question = document.querySelector("#question");
