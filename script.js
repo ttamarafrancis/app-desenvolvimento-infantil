@@ -49,6 +49,7 @@ const choices = document.querySelector("#choices");
 const feedback = document.querySelector("#feedback");
 const repeat = document.querySelector("#repeat");
 const stars = document.querySelector("#stars");
+const starsHome = stars.parentElement;
 const start = document.querySelector("#start");
 let advanceTimer;
 let playbackVersion = 0;
@@ -128,7 +129,7 @@ function speakInstruction() {
 }
 
 function playSuccess() {
-  playAudio("acerto");
+  playAudio("comemoracao");
 }
 
 function clearErrorFeedback() {
@@ -155,6 +156,8 @@ function startRound(moveFocus = false) {
   clearTimeout(advanceTimer);
   solved = false;
   stars.hidden = true;
+  // Return the shared celebration before replacing the previous round's cards.
+  starsHome.append(stars);
   feedback.textContent = "";
   audioStatus.textContent = "";
   // Prefer another concept on the next round; choose only among loaded figures.
@@ -203,6 +206,7 @@ function startRound(moveFocus = false) {
       feedback.textContent = "Muito bem! Você encontrou a figura.";
       stopAudio();
       audioStatus.textContent = "";
+      button.append(stars);
       stars.hidden = false;
       playSuccess();
       for (const option of choices.querySelectorAll("button")) option.setAttribute("aria-disabled", "true");

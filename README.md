@@ -8,7 +8,7 @@ O objetivo é oferecer jogos gratuitos, sem anúncios, sem login e sem coleta de
 
 ## Primeira atividade: Encontre a Figura
 
-A criança lê uma pergunta como “Onde está a bola?” e toca em uma das duas opções grandes. Uma resposta diferente mostra um × vermelho suave no cartão escolhido e toca uma nota curta. A pergunta permanece e permite uma nova tentativa, sem punição. No acerto e na próxima rodada, a marca de erro desaparece. Uma resposta correta recebe uma mensagem positiva para leitores de tela, três estrelinhas e um som suave; após 2,2 segundos o jogo avança sozinho. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
+A criança lê uma pergunta como “Onde está a bola?” e toca em uma das duas opções grandes. Uma resposta diferente mostra um × vermelho suave no cartão escolhido e toca uma nota curta. A pergunta permanece e permite uma nova tentativa, sem punição. No acerto e na próxima rodada, a marca de erro desaparece. Uma resposta correta recebe uma mensagem positiva para leitores de tela, três estrelinhas sobre o cartão escolhido e uma comemoração curta com “Êêê!” e três palminhas suaves; após 2,2 segundos o jogo avança sozinho. Não há limite de tempo para responder. A comemoração respeita a preferência por movimentos reduzidos.
 
 O jogo tenta reproduzir a primeira pergunta automaticamente. Se o navegador bloquear, aparece **Começar com som**: um toque libera o áudio. As próximas rodadas reproduzem a pergunta automaticamente. Cada rodada reproduz um arquivo MP3 local com a pergunta em português brasileiro; o **ícone de alto-falante** permite repetir. O som de acerto também é um MP3 local. Todos usam o mesmo elemento de áudio, liberado pelo toque inicial, sem depender da síntese de voz do Safari nem de serviços externos. Se a reprodução falhar, o jogo mostra uma mensagem e os controles nativos de áudio para tentar novamente.
 
@@ -46,7 +46,7 @@ Para adicionar uma figura, coloque a imagem em `assets/` e registre seu arquivo,
 
 ## Acessibilidade e validação
 
-A página inclui idioma português brasileiro, botões nativos com nomes acessíveis, foco visível, navegação por teclado, mensagens de status para leitores de tela e opção de reduzir movimentos. Não há limite de tempo para responder. A comemoração é curta, com som MP3 local de três notas e estrelas, sem flashes.
+A página inclui idioma português brasileiro, botões nativos com nomes acessíveis, foco visível, navegação por teclado, mensagens de status para leitores de tela e opção de reduzir movimentos. Não há limite de tempo para responder. A comemoração é curta, com voz e palmas em um único MP3 local e estrelas sobre o cartão correto, sem flashes.
 
 Verificação básica de JavaScript:
 
