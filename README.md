@@ -14,7 +14,7 @@ O jogo tenta reproduzir a primeira pergunta automaticamente. Se o navegador bloq
 
 As perguntas usam **Dora**, a voz feminina brasileira `pf_dora` do modelo neural Kokoro v1.0, em ritmo levemente mais calmo (0,92). Os MP3 ficam em `assets/audio/voz-dora/`, com volume de fala normalizado. O áudio pronto é o mesmo em todos os aparelhos e não depende de serviços de voz durante o jogo. Veja `assets/audio/README.md` para gerar novas perguntas ou substituir a voz. Nenhum sintetizador ou pacote adicional é necessário para executar o site.
 
-As perguntas e as posições das opções são sorteadas. As 33 figuras atuais são menina, menino, casa, bola, árvore, nuvem, arco-íris, lua, sol, carro, maçã, uva, melancia, morango, banana, galinha, pato, gato, jacaré, girafa, elefante, cachorro, macaco, prato, colher, coelho, cavalo, vaca, passarinho, peixe, caneca, livro e leão. Variantes de um mesmo conceito não podem ser distratores entre si. O conceito da rodada anterior não se repete imediatamente.
+As perguntas e as posições das opções são sorteadas. As 40 figuras atuais são menina, menino, casa, bola, árvore, nuvem, arco-íris, lua, sol, carro, maçã, uva, melancia, morango, banana, galinha, pato, gato, jacaré, girafa, elefante, cachorro, macaco, prato, colher, coelho, cavalo, vaca, passarinho, peixe, caneca, livro, leão, olhos, boca, nariz, pé, mão, pão e tênis. As perguntas aceitam singular e plural, como “Onde estão os olhos?”. Variantes de um mesmo conceito não podem ser distratores entre si. O conceito da rodada anterior não se repete imediatamente.
 
 ## Executar
 
@@ -38,7 +38,7 @@ Não são necessários chaves, banco de dados ou instalação de pacotes. Para u
 - `script.js`: catálogo, sorteio, respostas e áudio.
 - `assets/`: ilustrações fornecidas pelo projeto; veja a lista em `assets/README.md`.
 
-33 novas ilustrações fornecidas pela autora estão em `assets/figuras/`, preservadas no formato JPEG original. As figuras do primeiro conjunto foram removidas. O fundo escolhido pela autora continua em `assets/fundo-aquarela.jpg`.
+40 novas ilustrações fornecidas pela autora estão em `assets/figuras/`, preservadas no formato JPEG original. As figuras do primeiro conjunto foram removidas. O fundo escolhido pela autora continua em `assets/fundo-aquarela.jpg`.
 
 Se não houver imagens suficientes, aparecem placeholders textuais identificados para testar o fluxo. Com pelo menos duas imagens de conceitos distintos, o sorteio usa somente figuras carregadas.
 
@@ -58,4 +58,4 @@ Ao testar no navegador, verifique duas opções, tentativa após erro, mensagem 
 
 ## Status
 
-Primeira versão web funcional do jogo, em desenvolvimento. 33 ilustrações novas integradas; validação com usuários ainda pendente. PWA, Android, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras e não fazem parte desta versão.
+Primeira versão web funcional do jogo, em desenvolvimento. 40 ilustrações novas integradas; validação com usuários ainda pendente. PWA, Android, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras e não fazem parte desta versão.

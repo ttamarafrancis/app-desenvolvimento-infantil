@@ -35,6 +35,13 @@ const FIGURES = [
   {"id": "caneca", "concept": "caneca", "label": "Caneca", "question": "Onde está a caneca?", "file": "figuras/caneca.jpg"},
   {"id": "livro", "concept": "livro", "label": "Livro", "question": "Onde está o livro?", "file": "figuras/livro.jpg"},
   {"id": "leao", "concept": "leao", "label": "Leão", "question": "Onde está o leão?", "file": "figuras/leao.jpg"},
+  {"id": "olhos", "concept": "olhos", "label": "Olhos", "question": "Onde estão os olhos?", "file": "figuras/olhos.jpg"},
+  {"id": "boca", "concept": "boca", "label": "Boca", "question": "Onde está a boca?", "file": "figuras/boca.jpg"},
+  {"id": "nariz", "concept": "nariz", "label": "Nariz", "question": "Onde está o nariz?", "file": "figuras/nariz.jpg"},
+  {"id": "pe", "concept": "pe", "label": "Pé", "question": "Onde está o pé?", "file": "figuras/pe.jpg"},
+  {"id": "mao", "concept": "mao", "label": "Mão", "question": "Onde está a mão?", "file": "figuras/mao.jpg"},
+  {"id": "pao", "concept": "pao", "label": "Pão", "question": "Onde está o pão?", "file": "figuras/pao.jpg"},
+  {"id": "tenis", "concept": "tenis", "label": "Tênis", "question": "Onde está o tênis?", "file": "figuras/tenis.jpg"},
 ];
 const GAME_CONFIG = { optionCount: 2, advanceDelay: 2200, questionAudioPath: "assets/audio/voz-dora" };
 const question = document.querySelector("#question");
@@ -157,14 +164,14 @@ function startRound(moveFocus = false) {
   // Keep distractors semantically distinct, even if the catalog has variants.
   const uniqueDistractors = distractors.filter((figure, index, all) => all.findIndex((item) => item.concept === figure.concept) === index);
   const options = shuffled([current, ...uniqueDistractors.slice(0, GAME_CONFIG.optionCount - 1)]);
-  const match = current.question.match(/^Onde está ([oa]) (.+)$/);
-  question.replaceChildren(document.createTextNode("Onde está "));
+  const match = current.question.match(/^(Onde (?:está|estão)) (o|a|os|as) (.+)$/);
+  question.replaceChildren(document.createTextNode(match[1] + " "));
   const article = document.createElement("span");
   article.className = "question-article";
-  article.textContent = match[1] + " ";
+  article.textContent = match[2] + " ";
   const target = document.createElement("span");
   target.className = "question-target";
-  target.textContent = match[2];
+  target.textContent = match[3];
   question.append(article, target);
   choices.style.gridTemplateColumns = `repeat(${options.length}, minmax(0, 1fr))`;
   choices.replaceChildren();
