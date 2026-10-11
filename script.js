@@ -46,39 +46,7 @@ const FIGURES = [
 const GAME_CONFIG = {
   optionCount: 2,
   advanceDelay: 2200,
-  questionAudioPath: "assets/audio/voz-dora",
-  questionAudioOverrides: {
-    "menina": "assets/audio/voz-elevenlabs/menina.mp3",
-    "menino": "assets/audio/voz-elevenlabs/menino.mp3",
-    "casa": "assets/audio/voz-elevenlabs/casa.mp3",
-    "bola": "assets/audio/voz-elevenlabs/bola.mp3",
-    "arvore": "assets/audio/voz-elevenlabs/arvore.mp3",
-    "nuvem": "assets/audio/voz-elevenlabs/nuvem.mp3",
-    "arco-iris": "assets/audio/voz-elevenlabs/arco-iris.mp3",
-    "lua": "assets/audio/voz-elevenlabs/lua.mp3",
-    "sol": "assets/audio/voz-elevenlabs/sol.mp3",
-    "carro": "assets/audio/voz-elevenlabs/carro.mp3",
-    "maca": "assets/audio/voz-elevenlabs/maca.mp3",
-    "uva": "assets/audio/voz-elevenlabs/uva.mp3",
-    "melancia": "assets/audio/voz-elevenlabs/melancia.mp3",
-    "morango": "assets/audio/voz-elevenlabs/morango.mp3",
-    "banana": "assets/audio/voz-elevenlabs/banana.mp3",
-    "galinha": "assets/audio/voz-elevenlabs/galinha.mp3",
-    "pato": "assets/audio/voz-elevenlabs/pato.mp3",
-    "gato": "assets/audio/voz-elevenlabs/gato.mp3",
-    "jacare": "assets/audio/voz-elevenlabs/jacare.mp3",
-    "girafa": "assets/audio/voz-elevenlabs/girafa.mp3",
-    "elefante": "assets/audio/voz-elevenlabs/elefante.mp3",
-    "cachorro": "assets/audio/voz-elevenlabs/cachorro.mp3",
-    "macaco": "assets/audio/voz-elevenlabs/macaco.mp3",
-    "prato": "assets/audio/voz-elevenlabs/prato.mp3",
-    "colher": "assets/audio/voz-elevenlabs/colher.mp3",
-    "coelho": "assets/audio/voz-elevenlabs/coelho.mp3",
-    "cavalo": "assets/audio/voz-elevenlabs/cavalo.mp3",
-    "vaca": "assets/audio/voz-elevenlabs/vaca.mp3",
-    "passarinho": "assets/audio/voz-elevenlabs/passarinho.mp3",
-    "peixe": "assets/audio/voz-elevenlabs/peixe.mp3"
-  }
+  questionAudioPath: "assets/audio/voz-elevenlabs"
 };
 const question = document.querySelector("#question");
 const choices = document.querySelector("#choices");
@@ -135,8 +103,7 @@ function playAudio(file, isQuestion = false) {
   stopAudio();
   const version = playbackVersion;
   const audioPath = isQuestion ? GAME_CONFIG.questionAudioPath : "assets/audio";
-  const questionOverride = isQuestion ? GAME_CONFIG.questionAudioOverrides[file] : undefined;
-  player.src = questionOverride || `${audioPath}/${file}.mp3`;
+  player.src = `${audioPath}/${file}.mp3`;
   player.controls = false;
   audioStatus.textContent = "";
   const failed = (error) => {
