@@ -43,7 +43,23 @@ const FIGURES = [
   {"id": "pao", "concept": "pao", "label": "Pão", "question": "Onde está o pão?", "file": "figuras/pao.jpg"},
   {"id": "tenis", "concept": "tenis", "label": "Tênis", "question": "Onde está o tênis?", "file": "figuras/tenis.jpg"},
 ];
-const GAME_CONFIG = { optionCount: 2, advanceDelay: 2200, questionAudioPath: "assets/audio/voz-dora" };
+const GAME_CONFIG = {
+  optionCount: 2,
+  advanceDelay: 2200,
+  questionAudioPath: "assets/audio/voz-dora",
+  questionAudioOverrides: {
+    "menina": "assets/audio/voz-elevenlabs/menina.mp3",
+    "menino": "assets/audio/voz-elevenlabs/menino.mp3",
+    "casa": "assets/audio/voz-elevenlabs/casa.mp3",
+    "bola": "assets/audio/voz-elevenlabs/bola.mp3",
+    "arvore": "assets/audio/voz-elevenlabs/arvore.mp3",
+    "nuvem": "assets/audio/voz-elevenlabs/nuvem.mp3",
+    "arco-iris": "assets/audio/voz-elevenlabs/arco-iris.mp3",
+    "lua": "assets/audio/voz-elevenlabs/lua.mp3",
+    "sol": "assets/audio/voz-elevenlabs/sol.mp3",
+    "carro": "assets/audio/voz-elevenlabs/carro.mp3"
+  }
+};
 const question = document.querySelector("#question");
 const choices = document.querySelector("#choices");
 const feedback = document.querySelector("#feedback");
@@ -99,7 +115,8 @@ function playAudio(file, isQuestion = false) {
   stopAudio();
   const version = playbackVersion;
   const audioPath = isQuestion ? GAME_CONFIG.questionAudioPath : "assets/audio";
-  player.src = `${audioPath}/${file}.mp3`;
+  const questionOverride = isQuestion ? GAME_CONFIG.questionAudioOverrides[file] : undefined;
+  player.src = questionOverride || `${audioPath}/${file}.mp3`;
   player.controls = false;
   audioStatus.textContent = "";
   const failed = (error) => {

@@ -2,7 +2,9 @@
 
 ## Voz das perguntas
 
-Os 40 MP3 de perguntas estão em `voz-dora/`, nomeados pelo conceito do catálogo (por exemplo, `voz-dora/gato.mp3`). A voz é **Dora** (`pf_dora`), feminina e brasileira, do modelo neural **Kokoro v1.0**. Todos usam `lang="pt-br"` e `speed=0.92`. O volume foi normalizado para -19 LUFS, com pico verdadeiro limitado a -2 dBTP e pequenas pausas no início e no final.
+Os arquivos enviados pela autora e gerados no **ElevenLabs** estão em `voz-elevenlabs/`. O primeiro lote cobre menina, menino, casa, bola, árvore, nuvem, arco-íris, lua, sol e carro. Os dez MP3 foram copiados integralmente, sem alterações no áudio. Apenas os nomes `árvore.mp3` e `arcoiris.mp3` foram padronizados para `arvore.mp3` e `arco-iris.mp3`, correspondendo aos conceitos do catálogo. `GAME_CONFIG.questionAudioOverrides` seleciona explicitamente esses arquivos; novos lotes podem ser adicionados à mesma lista. O jogo reproduz os MP3 locais, sem consultar o ElevenLabs ou exigir uma chave de API.
+
+As outras 30 perguntas continuam usando **Dora** (`pf_dora`), feminina e brasileira, do modelo neural **Kokoro v1.0**, até serem substituídas pelos próximos arquivos enviados. O conjunto original de 40 MP3 de Dora permanece em `voz-dora/`, nomeado pelo conceito do catálogo (por exemplo, `voz-dora/gato.mp3`). Esses arquivos foram gerados com `lang="pt-br"` e `speed=0.92`, normalizados para -19 LUFS, com pico verdadeiro limitado a -2 dBTP e pequenas pausas no início e no final.
 
 Modelo: [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M), licença Apache 2.0. Inferência: [kokoro-onnx](https://github.com/thewh1teagle/kokoro-onnx), licença MIT. Os arquivos do modelo vêm da release `model-files-v1.1` indicada na documentação do kokoro-onnx. Os pesos e as bibliotecas de geração não são enviados ao site; apenas os MP3 prontos. Não há chamadas externas de síntese de voz durante o jogo.
 
@@ -22,7 +24,7 @@ curl -fL https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-fil
 
 O script lê as perguntas de `FIGURES` em `script.js`, usa dois threads de CPU e só grava os MP3 no repositório após gerar o lote completo com sucesso. A opção `--output-dir` permite preparar arquivos em outra pasta para revisão. Novos áudios devem ser conferidos antes da publicação. O catálogo atual usa objetos JSON, com vírgula final na lista, formato aceito pelo gerador.
 
-Para usar gravações humanas, substitua os arquivos em `voz-dora/` mantendo os nomes, ou configure outra pasta em `GAME_CONFIG.questionAudioPath`. Para evitar áudio antigo em cache, use uma nova pasta e atualize a versão de `script.js` em `index.html`.
+Para adicionar novos áudios enviados, coloque-os em `voz-elevenlabs/` com o nome do conceito e acrescente o caminho em `GAME_CONFIG.questionAudioOverrides`. Conceitos sem uma entrada nessa lista continuam usando `GAME_CONFIG.questionAudioPath`. Para usar gravações humanas, também é possível registrar seus caminhos nessa lista. Para evitar áudio antigo em cache, use novos caminhos ao substituir arquivos e atualize a versão de `script.js` em `index.html`.
 
 ## Efeitos
 
