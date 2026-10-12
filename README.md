@@ -2,7 +2,7 @@
 
 Aplicativo educativo infantil com atividades de linguagem, comunicação e associação de figuras.
 
-Projeto acadêmico da graduação em **Inteligência Artificial**, que poderá ser utilizado também em atividades de **extensão universitária**. O público são crianças, com acompanhamento de familiares, educadores ou responsáveis conforme necessário.
+Projeto de **extensão universitária** da graduação em **Inteligência Artificial**. O público são crianças, com acompanhamento de familiares, educadores ou responsáveis conforme necessário.
 
 O objetivo é oferecer jogos gratuitos, sem anúncios, sem login e sem coleta desnecessária de dados. Esta versão não usa analytics, cookies, armazenamento de respostas ou serviços externos de imagens. É um **recurso lúdico e educativo: não realiza diagnóstico, tratamento ou avaliação clínica**.
 
@@ -31,12 +31,28 @@ Abra o servidor no navegador do seu ambiente de desenvolvimento. Em um computado
 
 Não são necessários chaves, banco de dados ou instalação de pacotes. Para uma hospedagem pública, use um serviço de arquivos estáticos com HTTPS.
 
+## Salvar no celular e usar sem internet
+
+O jogo é um **aplicativo web instalável (PWA)**, disponível em [Encontre a Figura](https://ttamarafrancis.github.io/app-desenvolvimento-infantil/). O botão **Salvar no celular** abre a instalação quando o navegador oferece essa opção, ou mostra instruções para adicionar o jogo à tela inicial.
+
+- **Android:** abrir no Chrome e escolher **Instalar aplicativo** ou **Adicionar à tela inicial** pelo menu.
+- **iPhone/iPad:** abrir no Safari, tocar em **Compartilhar** e escolher **Adicionar à Tela de Início**.
+- Se o link foi aberto dentro do WhatsApp, primeiro usar a opção de abrir no navegador.
+
+Na primeira visita, mantenha a conexão até aparecer **Pronto para usar sem internet**. Esse aviso confirma que a página, as 40 figuras, os 40 áudios do ElevenLabs, os efeitos, a fonte, o fundo e os ícones foram salvos. Depois é possível abrir o jogo pelo ícone e brincar offline. O navegador gerencia esse armazenamento local. São armazenados somente arquivos do aplicativo, sem respostas ou dados pessoais das crianças.
+
+O ícone reutiliza a ilustração do elefante enviada pela autora, exportada em PNG nos tamanhos de 192 e 512 pixels. As figuras originais continuam preservadas. O aplicativo abre em uma janela própria quando instalado por um navegador que oferece esse recurso. A instalação real e a liberação inicial do áudio devem ser conferidas nos celulares usados pelas famílias.
+
 ## Estrutura e imagens
 
 - `index.html`: estrutura acessível da página.
 - `style.css`: interface infantil responsiva, com fundo em aquarela fornecido pela autora (`assets/fundo-aquarela.jpg`) e cartões pastel. A fonte arredondada Baloo 2 é servida localmente (licença em `assets/fonts/OFL.txt`).
 - `script.js`: catálogo, sorteio, respostas e áudio.
+- `manifest.webmanifest`: nome, ícones e abertura pela tela inicial.
+- `pwa.js`: instalação e confirmação de que o download offline está completo.
+- `service-worker.js`: armazenamento dos arquivos necessários e reprodução de trechos de áudio offline.
 - `assets/`: ilustrações fornecidas pelo projeto; veja a lista em `assets/README.md`.
+- `ENTREGA.md`: roteiro de apresentação do projeto de extensão e orientações para os testes com famílias.
 
 40 novas ilustrações fornecidas pela autora estão em `assets/figuras/`, preservadas no formato JPEG original. As figuras do primeiro conjunto foram removidas. O fundo escolhido pela autora continua em `assets/fundo-aquarela.jpg`.
 
@@ -56,6 +72,10 @@ node --check script.js
 
 Ao testar no navegador, verifique duas opções, tentativa após erro, mensagem após acerto, avanço automático, áudio automático e repetição do áudio e telas de celular/tablet. A reprodução precisa também de conferência auditiva no dispositivo real; não depende de uma voz instalada.
 
+Para verificar o modo offline, espere o aviso de download completo, desconecte a rede e recarregue a página. Confira as figuras e o áudio, a repetição, uma resposta incorreta e uma resposta correta seguida da próxima pergunta. Os testes locais também verificaram as 40 perguntas offline, as condições de instalação do Chrome, os pedidos de trechos de MP3 e a conservação da versão instalada quando uma atualização falha. Isso não substitui o teste em um iPhone ou Android real.
+
+Para publicar atualizações, altere a versão de `CACHE_NAME` e dos URLs de CSS e JS em `service-worker.js` junto das versões correspondentes em `index.html`. Mantenha `CONCEPTS` e a lista de arquivos offline em sincronia com `FIGURES` e `GAME_CONFIG.questionAudioPath`. A versão nova só assume o controle depois de salvar todos os arquivos; os arquivos antigos são removidos após esse sucesso. Uma falha no download preserva a versão completa já instalada.
+
 ## Status
 
-Primeira versão web funcional do jogo, em desenvolvimento. 40 ilustrações novas integradas; validação com usuários ainda pendente. PWA, Android, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras e não fazem parte desta versão.
+Versão web instalável do jogo, com 40 ilustrações e perguntas do ElevenLabs, preparada para uso offline. A validação com famílias e o teste de instalação nos aparelhos reais ainda estão pendentes. Uma versão para lojas de aplicativos, outros jogos e atividades de cores, animais, números e formas são possibilidades futuras.

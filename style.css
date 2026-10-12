@@ -32,6 +32,15 @@ h1:focus { outline: none; }
 .audio-status:empty { display: none; }
 #game-audio:not([controls]) { display: none; }
 #game-audio[controls] { display: block; max-width: 100%; margin: 12px auto; }
+.app-tools { text-align: center; margin-top: 24px; }
+.install-button { min-height: 44px; border: 1px solid #d4dfc3; border-radius: 24px; padding: 7px 18px; background: #fffaf0; color: #547047; font-size: 1rem; }
+.offline-status { margin: 8px 0 0; font-family: system-ui, sans-serif; font-size: .8rem; line-height: 1.5; color: #695743; }
+.install-help { position: fixed; width: min(92vw, 460px); max-height: 85svh; overflow: auto; padding: 26px; border: 1px solid #d4dfc3; border-radius: 28px; color: #50331f; background: #fffdf4; box-shadow: 0 12px 50px #50331f30; }
+.install-help::backdrop { background: #50331f66; }
+.install-help h2 { font-size: 1.6rem; line-height: 1.2; margin: 10px 30px 20px 0; }
+.install-help h3 { margin: 18px 0 4px; color: #547047; }
+.install-help p { font-family: system-ui, sans-serif; font-size: .95rem; line-height: 1.55; }
+.close-dialog { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; border: 0; border-radius: 50%; background: #e4edd4; color: #50331f; font-size: 1.8rem; line-height: 1; }
 [hidden] { display: none !important; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
 @media (max-width: 600px) {

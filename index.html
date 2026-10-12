@@ -4,10 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fffdf4">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Encontre">
   <meta name="description" content="Uma brincadeira de palavras e figuras, no seu ritmo.">
   <title>Encontre a Figura</title>
-  <link rel="stylesheet" href="style.css?v=16">
-  <script src="script.js?v=23" defer></script>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="style.css?v=24">
+  <script src="script.js?v=24" defer></script>
+  <script src="pwa.js?v=24" defer></script>
 </head>
 <body>
   <main id="game" class="game" aria-label="Encontre a Figura">
@@ -25,6 +32,20 @@
     <div id="stars" class="stars" aria-hidden="true" hidden>✦ ★ ✦</div>
     <p id="asset-note" class="sr-only" hidden>Ilustrações temporariamente indisponíveis.</p>
     <noscript>Ative o JavaScript para brincar.</noscript>
+    <div class="app-tools" aria-label="Opções para salvar o jogo">
+      <button id="install-app" class="install-button" type="button">Salvar no celular</button>
+      <p id="offline-status" class="offline-status" role="status">Preparando o jogo para usar sem internet…</p>
+    </div>
   </main>
+  <dialog id="install-help" class="install-help" aria-labelledby="install-title">
+    <button id="close-install-help" class="close-dialog" type="button" aria-label="Fechar instruções">×</button>
+    <h2 id="install-title">Guardar o jogo no celular</h2>
+    <h3>iPhone ou iPad</h3>
+    <p>Abra o link no Safari, toque em <strong>Compartilhar</strong> e escolha <strong>Adicionar à Tela de Início</strong>.</p>
+    <h3>Android</h3>
+    <p>Abra o link no Chrome, toque no menu <strong>⋮</strong> e escolha <strong>Instalar aplicativo</strong> ou <strong>Adicionar à tela inicial</strong>.</p>
+    <p>Se abriu pelo WhatsApp, escolha a opção de abrir no navegador.</p>
+    <p>Para usar sem internet, espere aparecer <strong>“Pronto para usar sem internet”</strong> antes de desconectar.</p>
+  </dialog>
 </body>
 </html>

@@ -44,3 +44,5 @@ As 40 figuras atuais foram fornecidas pela autora e preservadas no formato JPEG 
 - figuras/tenis.jpg
 
 `fundo-aquarela.jpg` é o fundo escolhido pela autora e permanece independente do catálogo de figuras. Nenhuma imagem externa é utilizada. `FIGURES` em `script.js` registra arquivo, nome, pergunta e conceito de cada figura. Com imagens de pelo menos dois conceitos diferentes, somente imagens carregadas entram no sorteio.
+
+`icons/icon-192.png` e `icons/icon-512.png` são exportações da ilustração original `figuras/elefante.jpg` para o ícone do aplicativo instalado. O arquivo original permanece intacto.
